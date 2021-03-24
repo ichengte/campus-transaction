@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Project: campus-transaction
+  ~ File: UserMapper.xml
+  ~ Date: 2021/3/23 下午6:29
+  ~ Author: TonyJam
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.user.mapper.UserMapper">
+    <!-- 登录 -->
+    <select id="login" resultType="com.user.entity.User">
+         select * from tony_user where username=#{username} and userpwd=#{userpwd}
+    </select>
+    
+    <!-- 注册 -->
+    <insert id="register" parameterType="com.user.entity.User">
+         insert into tony_user(username, userpwd, name, sex, academy, grade, qq, phone, profile)
+                    values(#{username},#{userpwd},#{name},#{sex},#{academy},#{grade},#{qq},#{phone},#{profile})
+    </insert>
+    
+    <!-- 分页查询 -->
+    <select id="findPage" resultType="com.user.entity.User">
+         <![CDATA[
+          select d.* from
+          (select u.*,rownum r from user1 u) d 
+          where r>(#{index}-1)*#{size} and r<=#{index}*#{size}
+         ]]>
+    </select>
+    
+    <!-- 查询总记录 -->
+    <select id="countPage" resultType="int">
+         select count(*) from user1
+    </select>
+    
+    <sql id="find1">
+         select d.* from
+         (select u.*,rownum r from user1 u
+    </sql>
+    
+    <sql id="find2">
+          ) d
+         <![CDATA[
+           where r>(#{index}-1)*#{size} and r<=#{index}*#{size}
+         ]]>
+    </sql>
+    <!-- 模糊查询 -->
+    <select id="findByName" resultType="com.user.entity.User">
+      <include refid="find1"/>
+        <where>
+            <if test="uname!=null and uname!=''">
+               and uname like '%'||#{uname}||'%'
+            </if>
+        </where>
+      <include refid="find2"/>
+    </select>
+    
+    <!-- 查询总记录 -->
+    <select id="count" resultType="int">
+         select count(1) from user1
+         <where>
+            <if test="uname!=null and uname!=''">
+                and uname like '%'||#{uname}||'%'
+            </if>
+         </where>
+    </select>
+    
+    <!-- 删除 -->
+    <delete id="delete" parameterType="int">
+        delete from user1 where id=#{id}
+    </delete>
+    
+    <!-- 根据id查找 -->
+    <select id="findById" resultType="com.user.entity.User">
+        select * from user1 where id=#{id}
+    </select>
+    
+    <!-- 修改 -->
+    <update id="update" parameterType="com.user.entity.User">
+        update user1 set id=#{id},uname=#{uname},upwd=#{upwd},type=#{type} where id=#{id}
+    </update>
+</mapper>

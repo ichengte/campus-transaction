@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Project: campus-transaction
+  ~ File: mybatis.xml
+  ~ Date: 2021/3/23 下午6:29
+  ~ Author: TonyJam
+  -->
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "mybatis-3-config.dtd" >
+<configuration>
+     <!-- 加载映射文件 -->
+     <mappers>
+          <mapper resource="com/user/mapper/UserMapper.xml"/>
+     </mappers>
+</configuration>

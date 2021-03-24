@@ -1,0 +1,55 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 1000,
+  "data": [
+    {
+      "id": 10000,
+      "username": "user-0",
+      "userpassword": "userpassword-0",
+      "name": "name-0",
+      "sex": "sex-0",
+      "academy": 255,
+      "grade": 24,
+      "qq": 82830700,
+      "phone": "17607058929",
+      "profile": 57
+    },
+    {
+      "id": 10001,
+      "username": "user-1",
+      "userpassword": "userpassword-1",
+      "name": "name-1",
+      "sex": "sex-1",
+      "academy": 255,
+      "grade": 24,
+      "qq": 82830700,
+      "phone": "17607058929",
+      "profile": 57
+    },
+	{
+      "id": 10002,
+      "username": "user-2",
+      "userpassword": "userpassword-2",
+      "name": "name-2",
+      "sex": "sex-2",
+      "academy": 255,
+      "grade": 24,
+      "qq": 82830700,
+      "phone": "17607058929",
+      "profile": 57
+    },
+	{
+      "id": 10003,
+      "username": "user-3",
+      "userpassword": "userpassword-3",
+      "name": "name-3",
+      "sex": "sex-3",
+      "academy": 255,
+      "grade": 24,
+      "qq": 82830700,
+      "phone": "17607058929",
+      "profile": 57
+    }
+  ]
+}

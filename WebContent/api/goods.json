@@ -1,0 +1,46 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 1000,
+  "data": [
+    {
+      "id": 10000,
+      "title": "title-0",
+      "publish_time": "publish_time-0",
+      "content": "content-0",
+      "buy_price": 12,
+      "sell_price": 6,
+      "picture": "picture-0",
+      "views": 82,
+      "status": 1,
+      "category_id": 5,
+	  "owner_id": 10000
+    },
+    {
+      "id": 10001,
+      "title": "title-1",
+      "publish_time": "publish_time-1",
+      "content": "content-1",
+      "buy_price": 12,
+      "sell_price": 6,
+      "picture": "picture-1",
+      "views": 82,
+      "status": 1,
+      "category_id": 5,
+	  "owner_id": 10001
+    },
+	{
+      "id": 10002,
+      "title": "title-2",
+      "publish_time": "publish_time-2",
+      "content": "content-2",
+      "buy_price": 12,
+      "sell_price": 6,
+      "picture": "picture-2",
+      "views": 82,
+      "status": 1,
+      "category_id": 5,
+	  "owner_id": 10002
+    }
+  ]
+}
