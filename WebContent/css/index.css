@@ -112,11 +112,11 @@ header {
 }
 
 .logo {
-    width: 120px;
-    height: 120px;
+    width: 90px;
+    height: 90px;
     position: absolute;
-    left: 0px;
-    top: 0px;
+    left: 40px;
+    top: 15px;
 }
 
 .center {
@@ -248,8 +248,8 @@ header {
     float: left;
     width: 72px;
     height: 16px;
-    margin: 0px 1px 0px 0px;
-    padding: 8px 0px;
+    margin: 0 1px 0 0;
+    padding: 8px 0;
     border: 1px solid transparent;
     border-radius: 25px;
     transition: all 0.2s ease-in 0s;
@@ -1091,7 +1091,7 @@ div.center {
     color: rgb(237, 78, 81);
 }
 
-.info .department {
+.info .academy {
     text-align: left;
     width: 35%;
     float: left;
@@ -1286,9 +1286,10 @@ div.center {
     background: transparent url('../images/page-arrow.png') no-repeat scroll 0% 0%;
 }
 
-.arrow-left::after {
-    content: "";
+
+.arrow-left {
     margin-right: 0.5em;
+    background-position: -8px -12px;
 }
 
 .arrow-right {

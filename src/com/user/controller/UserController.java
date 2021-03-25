@@ -8,12 +8,9 @@
 package com.user.controller;
 
 import com.user.entity.UserDto;
-import com.utils.Tools;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.user.entity.User;
@@ -21,7 +18,6 @@ import com.user.service.UserService;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import javax.tools.Tool;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -66,4 +62,14 @@ public class UserController {
 		}
 		return map;
 	}
+
+	@RequestMapping(value="/loginOut.do")
+//	@ResponseBody
+	public Object  loginOut(HttpSession session){
+		HashMap<String, Object> map = new HashMap<>();
+		session.removeAttribute("user");
+		map.put("success", 1);
+		return "user-index";
+	}
+
 }

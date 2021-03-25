@@ -1,10 +1,3 @@
-/*
- * Project: campus-transaction
- * File: common_001.js
- * Date: 2021/3/23 下午6:29
- * Author: TonyJam
- */
-
 var a = function(b) {
     var d = document,
     e = d.createElement('script');

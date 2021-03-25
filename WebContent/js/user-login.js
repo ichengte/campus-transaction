@@ -65,10 +65,10 @@ var reMethod = "GET",
 $(document).ready(function () {
 
     $('#username').focus(function () {
-        $('#loginCue').html("<font ><b>请输入学号</b></font>");
+        $('#loginCue').html("<font ><b>请输入用户名</b></font>");
     }).blur(function () {
         if ($('#username').val().length === 0) {
-            $('#loginCue').html("<font color='red'><b>学号不能为空</b></font>");
+            $('#loginCue').html("<font color='red'><b>用户名不能为空</b></font>");
             return false;
         }
         return true;
@@ -110,7 +110,7 @@ $(document).ready(function () {
             dataType: 'json',
             data: {"username": $('#username').val(), "userpwd": $('#userpwd').val()},
             success: function (res) {
-                alert(res.username);
+                location.href = "user-index.jsp"
             }
         });
 
@@ -229,10 +229,13 @@ $(document).ready(function () {
             dataType : "json",
             success : function(res) {
                 if (res.success){
-                    location.href="user-index.jsp"
+                    confirm("注册成功，快去登录吧");
+                    location.href="user-login.jsp"
                 }
             }
         })
+
+
 
         // $.ajax({
         // 	type: "GET",

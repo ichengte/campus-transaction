@@ -1,10 +1,3 @@
-/*
- * Project: campus-transaction
- * File: common.js
- * Date: 2021/3/23 下午6:29
- * Author: TonyJam
- */
-
 var zb_cookie = {
     setCookie:function(name,value,iTime){
         if(arguments.length==2){

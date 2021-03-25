@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Project: campus-transaction
+  ~ File: CategoryMapper.xml
+  ~ Date: 2021/3/24 下午5:23
+  ~ Author: TonyJam
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.category.mapper.CategoryMapper">
+    <select id="findAll" resultType="com.category.entity.Category">
+        select * from tony_category
+    </select>
+</mapper>

@@ -11,5 +11,7 @@
      <!-- 加载映射文件 -->
      <mappers>
           <mapper resource="com/user/mapper/UserMapper.xml"/>
+          <mapper resource="com/goods/mapper/GoodsMapper.xml"/>
+          <mapper resource="com/category/mapper/CategoryMapper.xml" />
      </mappers>
 </configuration>

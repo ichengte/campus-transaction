@@ -85,7 +85,7 @@
                     <li>
                         <label for="name" class="input-tips2">姓名：</label>
                         <div class="inputOuter2">
-                            <input type="text" id="name" name="user.name" maxlength="16" class="inputstyle2"/>
+                            <input type="text" id="name" name="user.realname" maxlength="16" class="inputstyle2"/>
                         </div>
                     </li>
                     <li>

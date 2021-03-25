@@ -15,8 +15,8 @@
     
     <!-- 注册 -->
     <insert id="register" parameterType="com.user.entity.User">
-         insert into tony_user(username, userpwd, name, sex, academy, grade, qq, phone, profile)
-                    values(#{username},#{userpwd},#{name},#{sex},#{academy},#{grade},#{qq},#{phone},#{profile})
+         insert into tony_user(username, userpwd, realname, sex, academy, grade, qq, phone, profile)
+                    values(#{username},#{userpwd},#{realname},#{sex},#{academy},#{grade},#{qq},#{phone},#{profile})
     </insert>
     
     <!-- 分页查询 -->

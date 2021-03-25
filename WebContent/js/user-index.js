@@ -5,48 +5,49 @@
  * Author: TonyJam
  */
 
-$(document).ready(function(){
-	initProducts();
-	
-})
-function initProducts(){
-	$.ajax({
-		type:"POST",
-		url:"newProServlet",
-		dataType:"json",
-		data:{},
-		success:function(resp){
-			var i;
-			for( i=0;i<resp.length;i++){
-				if(resp[i].isHot=="1"){
-					resp[i].isHot="推荐";
-				}else{
-					resp[i].isHot="新品";
-				}
-			}
-			for( i=0;i<resp.length;i++){
-				var str = '<li class="item"><a href="product_detail.jsp?pid='+resp[i].pid+'" class="img" target="_top"><img id="pro_img" src="'+resp[i].pimage+'" alt="'+resp[i].pdesc+'"></a>'
-                +' <div class="info">'
-                +' <div class="price">'+resp[i].salePrice+'</div>'
-                +' <div class="name"> '
-                +' <a href="product_detail.jsp?pid='+resp[i].pid+'" target="_top">'+resp[i].pname+'</a>'
-                +' </div>'
-                +' <div class="department"><span>原价：'+resp[i].buyPrice+'</span></div>'
-                +' <div class="place"><span>上架时间：'+resp[i].creatTime+'</span></div>';
-				
-				if(resp[i].isHot=="推荐"){
-					str += '<div class="school0"><span>'+resp[i].isHot+'</span></div></div> </li>&nbsp';
-				}
-				if(resp[i].isHot=="新品"){
-					str += '<div class="school"><span>'+resp[i].isHot+'</span></div></div> </li>&nbsp';
-				}
-				$('.items').append(
-						str
-				 )
-                 
-		 }
-		}
-	});
+
+$(document).ready(function () {
+    initGoods();
+});
+
+function initGoods() {
+    $.ajax({
+        type: "POST",
+        url: "goods/findAll.do",
+        dataType: "json",
+        data: {},
+        success: function (res) {
+            for (var i = 0; i < res.length; i++) {
+                if (res[i].recommendation === 1) {
+                    res[i].recommendation = "推荐";
+                } else {
+                    res[i].recommendation = "新品";
+                }
+            }
+            var len = Math.min(res.length, 8);
+			var str = "";
+            for (var i = 0; i < len; i++) {
+				// alert(i);
+                 str += '<li class="item"><a href="common/product_detail.jsp?gid=' + res[i].gid + '" class="img" target="_top"><img id="pro_img" src="' + 'goods/' + res[i].picture + '" alt="' + res[i].pdesc + '"></a>'
+                    + ' <div class="info">'
+                    + ' <div class="price">' + res[i].sell_price + '</div>'
+                    + ' <div class="name"> '
+                    + ' <a href="product_detail.jsp?gid=' + res[i].gid + '" target="_top">' + res[i].title + '</a>'
+                    + ' </div>'
+                    + ' <div class="department"><span>原价：' + res[i].buy_price + '</span></div>'
+                    + ' <div class="place"><span>上架时间：' + res[i].publish_time + '</span></div>';
+
+                if (res[i].recommendation === "推荐") {
+                    str += '<div class="school0"><span>' + res[i].recommendation + '</span></div></div> </li>&nbsp';
+                }
+                if (res[i].recommendation === "新品") {
+                    str += '<div class="school"><span>' + res[i].recommendation + '</span></div></div> </li>&nbsp';
+                }
+
+            }
+			$('.items').html(str);
+        }
+    });
 }
 
 

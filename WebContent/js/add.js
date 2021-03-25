@@ -1,10 +1,3 @@
-/*
- * Project: campus-transaction
- * File: add.js
- * Date: 2021/3/23 下午6:29
- * Author: TonyJam
- */
-
 $(window).load(function(){
     login_slider();
     // discriber();
