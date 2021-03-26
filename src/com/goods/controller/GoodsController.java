@@ -28,16 +28,18 @@ public class GoodsController {
     public List<Goods> findAll(HttpSession session){
         List<Goods> goodsList;
         goodsList = goodsService.findAll();
+        session.setAttribute("index", 1);
         session.setAttribute("goodsList", goodsList);
         return goodsList;
     }
     @RequestMapping(value = "/findByPage.do")
-    public String findByPage(Integer index, HttpSession map){
+    public String findByPage(Integer index, HttpSession session){
         if (index == null) {
             index = 1;
         }
         List<Goods> goodsList = goodsService.findByPage(index);
-        map.setAttribute("goodsList", goodsList);
+        session.setAttribute("goodsList", goodsList);
+        session.setAttribute("index", index);
         System.out.println(goodsList.size());
         return "user-index";
     }

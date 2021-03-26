@@ -28,13 +28,13 @@ function initGoods() {
 			var str = "";
             for (var i = 0; i < len; i++) {
 				// alert(i);
-                 str += '<li class="item"><a href="common/product_detail.jsp?gid=' + res[i].gid + '" class="img" target="_top"><img id="pro_img" src="' + 'goods/' + res[i].picture + '" alt="' + res[i].pdesc + '"></a>'
+                 str += '<li class="item"><a href="common/goods_detail.jsp?gid=' + res[i].gid + '" class="img" target="_top"><img id="pro_img" src="' + 'goods/' + res[i].picture + '" alt="' + res[i].pdesc + '"></a>'
                     + ' <div class="info">'
                     + ' <div class="price">' + res[i].sell_price + '</div>'
-                    + ' <div class="name"> '
-                    + ' <a href="product_detail.jsp?gid=' + res[i].gid + '" target="_top">' + res[i].title + '</a>'
+                    + ' <div class="name">'
+                    + ' <a style="padding-left: 47px;" href="product_detail.jsp?gid=' + res[i].gid + '" target="_top">' + res[i].title + '</a>'
                     + ' </div>'
-                    + ' <div class="department"><span>原价：' + res[i].buy_price + '</span></div>'
+                    + ' <div class="department" style="text-align: left"><span>原价：￥' + res[i].buy_price + '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>现价：￥' + res[i].sell_price + '</span></div>'
                     + ' <div class="place"><span>上架时间：' + res[i].publish_time + '</span></div>';
 
                 if (res[i].recommendation === "推荐") {

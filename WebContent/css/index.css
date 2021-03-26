@@ -1000,8 +1000,8 @@ div.center {
 .items {
     font-size: 0px;
     list-style: outside none none;
-    text-align: justify;
-    text-align-last: justify;
+    text-align: right;
+    /*text-align-last: justify;*/
 }
 
 .items::after {
@@ -1017,7 +1017,6 @@ div.center {
     height: 265px;
     margin-bottom: 20px;
     font-size: 12px;
-    text-align: left;
 }
 
 .item.fixed {
@@ -1100,9 +1099,8 @@ div.center {
 }
 
 .info .place {
-    text-align: right;
-    width: 55%;
-    float: right;
+    text-align: left;
+    float: left;
     font-size: 1em;
     color: rgb(133, 141, 142);
 }
@@ -1111,7 +1109,7 @@ div.center {
     position: absolute;
     max-width: 100%;
     top: 208px;
-    left: 0px;
+    left: 0;
     background-color: rgb(75, 192, 15);
     color: rgb(255, 255, 255);
     padding: 0px 10px;

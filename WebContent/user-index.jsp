@@ -22,6 +22,13 @@
     <script src="js/common_001.js" type="text/javascript"></script>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link href="css/bootstrap.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var index = ${index};
+            alert(index);
+            alert($('.page-num').text);
+        });
+    </script>
 </head>
 <body>
 <%@ include file="common/shop_header.jsp" %>
@@ -44,14 +51,15 @@
             <ul class="items clearfix">
                 <c:forEach items="${goodsList}" var="g">
                     <li class="item">
-                        <a href="#" class="img" target="_top"><img src="/goods/${g.picture }" alt="${g.title }"></a>
+                        <a style="padding-left: 47px;" href="common/goods_detail.jsp?gid=' + ${g.gid} + '" target="_top"><img id="pro_img" src="/goods/${g.picture }" alt="${g.title }"></a>
                         <div class="info">
                             <div class="price">"${g.sell_price }"</div>
                             <div class="name">
-                                <a href="http://hust.2shoujie.com/goods/169685.html">"${g.title }"</a>
+                                <a style="padding-left: 47px;" href="goods_detail.jsp?gid=' + ${g.gid} + '" target="_top">${g.title }</a>
                             </div>
 
-                            <div class="department"><span>原价: ${g.buy_price }</span></div>
+                            <div class="department" style="text-align: left"><span>原价：￥${g.buy_price}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>现价：￥${sell_price}</span></div>
+                            <div class="place"><span>上架时间：${g.publish_time} </span></div>;
                             <c:choose>
                                 <c:when test="${g.recommendation==1}">
                                     <div class="school0"><span>推荐</span></div>
@@ -68,7 +76,7 @@
         </div>
         <!-- 分页 开始 -->
         <div class="pages">
-            <a class="page-num cur" href="/goods/findByPage.do?index=1">1</a>
+            <a class="page-num" href="/goods/findByPage.do?index=1">1</a>
             <a class="page-num " href="/goods/findByPage.do?index=2">2</a>
             <a class="page-num " href="/goods/findByPage.do?index=3">3</a>
             <a class="page-arrow arrow-right" href="/goods/findByPage.do?index=${index + 1}">下一页</a>
