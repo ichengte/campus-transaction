@@ -24,9 +24,11 @@
     <link href="css/bootstrap.min.css">
     <script type="text/javascript">
         $(document).ready(function () {
-            var index = ${index};
-            alert(index);
-            alert($('.page-num').text);
+            var index = <%=session.getAttribute("index")%>;
+            if (index == null || index === "" || index === undefined){
+                index = 1;
+            }
+            $('.page-num').eq(index - 1).addClass("cur");
         });
     </script>
 </head>
@@ -76,10 +78,10 @@
         </div>
         <!-- 分页 开始 -->
         <div class="pages">
-            <a class="page-num" href="/goods/findByPage.do?index=1">1</a>
-            <a class="page-num " href="/goods/findByPage.do?index=2">2</a>
-            <a class="page-num " href="/goods/findByPage.do?index=3">3</a>
-            <a class="page-arrow arrow-right" href="/goods/findByPage.do?index=${index + 1}">下一页</a>
+            <a class="page-num" href="${pageContext.request.contextPath}/goods/findByPage.do?index=1">1</a>
+            <a class="page-num " href="${pageContext.request.contextPath}/goods/findByPage.do?index=2">2</a>
+            <a class="page-num " href="${pageContext.request.contextPath}/goods/findByPage.do?index=3">3</a>
+            <a class="page-arrow arrow-right" href="${pageContext.request.contextPath}/goods/findByPage.do?index=${index + 1}">下一页</a>
         </div>
         <!-- 分页 结束 -->
     </div>

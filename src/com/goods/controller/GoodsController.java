@@ -28,7 +28,6 @@ public class GoodsController {
     public List<Goods> findAll(HttpSession session){
         List<Goods> goodsList;
         goodsList = goodsService.findAll();
-        session.setAttribute("index", 1);
         session.setAttribute("goodsList", goodsList);
         return goodsList;
     }
