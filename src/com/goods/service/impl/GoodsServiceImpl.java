@@ -21,8 +21,8 @@ public class GoodsServiceImpl implements GoodsService {
     GoodsMapper goodsMapper;
 
     @Override
-    public List<Goods> findAll() {
-        return goodsMapper.findAll();
+    public List<Goods> findAll(String rank) {
+        return goodsMapper.findAll(rank);
     }
 
     @Override
@@ -43,5 +43,15 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public Boolean refresh(Integer gid) {
         return goodsMapper.refresh(gid);
+    }
+
+    @Override
+    public List<Goods> searchByKeywords(String keyword, String rank) {
+        return goodsMapper.searchByKeywords(keyword, rank);
+    }
+
+    @Override
+    public List<Goods> searchByCategory(Integer category, String rank) {
+        return goodsMapper.searchByCategory(category, rank);
     }
 }

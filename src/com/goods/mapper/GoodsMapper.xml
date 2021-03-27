@@ -27,13 +27,14 @@
         <association property="user" javaType="com.user.entity.User">
             <id column="uuid" property="uuid"/>
             <result column="realname" property="realname"/>
+            <result column="credit" property="credit"/>
         </association>
     </resultMap>
 
     <!-- findAll -->
     <select id="findAll" resultMap="goodsResult">
         select g.*, u.uuid, u.realname, c.cid, c.name from tony_user u, tony_goods g, tony_category c
-        where g.cid = c.cid and g.uuid = u.uuid and g.status = 1 order by recommendation desc
+        where g.cid = c.cid and g.uuid = u.uuid and g.status = 1 order by #{0} desc
     </select>
     <!--    findByPage-->
     <select id="findByPage" resultMap="goodsResult">
@@ -60,4 +61,16 @@
     <update id="sellout">
         update tony_goods set status=2 where gid=#{gid}
     </update>
+
+    <select id="searchByKeywords" resultMap="goodsResult">
+        select g.*, c.*, u.* from tony_goods g, tony_category c, tony_user u where g.cid=c.cid and g.uuid=u.uuid
+        and title like '%'||#{0}||'%'
+        order by #{1}
+    </select>
+
+    <select id="searchByCategory" resultMap="goodsResult">
+        select g.*, c.*, u.* from tony_goods g, tony_category c, tony_user u
+        where g.cid=c.cid and g.uuid=u.uuid and g.cid=#{0} order by #{1} desc
+
+    </select>
 </mapper>

@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.sql.Date;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,9 +28,14 @@ public class GoodsController {
 
     @RequestMapping(value = "/findAll.do")
     @ResponseBody
-    public List<Goods> findAll(HttpSession session){
+    public Object findAll(HttpSession session, String rank){
         List<Goods> goodsList;
-        goodsList = goodsService.findAll();
+        if (rank == null || rank.equals("null")){
+            rank = "publish_time";
+        }
+
+        goodsList = goodsService.findAll(rank);
+        System.out.println(goodsList);
         session.setAttribute("goodsList", goodsList);
         return goodsList;
     }
@@ -76,6 +84,31 @@ public class GoodsController {
             map.put("success", 0);
         }
         return map;
+    }
+
+    @RequestMapping(value = "/searchByKeyword.do")
+    @ResponseBody
+    public Object searchByKeywords(String keyword, String rank){
+
+        System.out.println(keyword + " " + rank);
+        if (rank == null){
+            rank = "publish_time";
+        }
+        List<Goods> goodsList = goodsService.searchByKeywords(keyword, rank);
+//        System.out.println(goodsList);
+        return  goodsList;
+    }
+
+    @RequestMapping(value = "/searchByCategory.do")
+    @ResponseBody
+    public Object searchByCategory(Integer category, String rank){
+//        System.out.println("category:" + category + " " + rank);
+        if (rank == null){
+            rank = "publish_time";
+        }
+        List<Goods> goodsList = goodsService.searchByCategory(category, rank);
+        System.out.println(goodsList);
+        return goodsList;
     }
 
 }

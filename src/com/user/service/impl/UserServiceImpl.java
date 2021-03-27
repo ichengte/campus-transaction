@@ -45,5 +45,4 @@ public class UserServiceImpl implements UserService {
 		return userMapper.saveInfo(user);
 	}
 
-
 }

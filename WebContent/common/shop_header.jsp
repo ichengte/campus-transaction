@@ -13,7 +13,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Insert title here</title>
-    <script  src="../js/jquery-3.1.1.min.js" type="text/javascript"></script>
     <style type="text/css">
         .loginandrigist {
             margin-left: 1000px;
@@ -31,17 +30,6 @@
             zoom: 1;
         }
     </style>
-
-
-    <script type="text/javascript">
-        $("#search-button").click(function() {
-            var keyword = $("#keyword").val();
-            window.location.href = "product_list.jsp?keyword=" + keyword;
-        });
-
-
-
-    </script>
 </head>
 <body>
 <header class="ease2">
@@ -99,22 +87,12 @@
                 '</div> </div>')
             $("#have-not-login").append(str)
         }
+        // 关键词搜索
+        $("#search-button").click(function () {
+            var keyword = $("#keyword").val();
+            location.href = "/common/goods_list.jsp?keyword=" + keyword;
+        });
     });
-    // // 登出
-    // $('#login-out-btn').click(function () {
-    //     alert("123");
-    //     $.ajax({
-    //         url: "user/loginOut.do",
-    //         dataType: 'json',
-    //         type:'post',
-    //         success:function (res) {
-    //             alert(res.success);
-    //             if (res.success){
-    //                 location.href = "/user-index.jsp";
-    //             }
-    //         }
-    //     });
-    // });
 
 </script>
 

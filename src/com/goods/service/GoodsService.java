@@ -12,9 +12,11 @@ import java.util.List;
  * Date: 2021/3/24 17:12
  */
 public interface GoodsService {
-    List<Goods> findAll();
+    List<Goods> findAll(String rank);
     List<Goods> findByPage(Integer index);
     List<Goods> findUserGoods(String username);
     Boolean modifyStatus(Integer gid, Integer status);
     Boolean refresh(Integer gid);
+    List<Goods> searchByKeywords(String keyword, String rank);
+    List<Goods> searchByCategory(Integer category, String rank);
 }

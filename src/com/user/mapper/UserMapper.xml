@@ -67,7 +67,6 @@
     </delete>
     
 
-    
     <!-- 修改 -->
     <update id="update" parameterType="com.user.entity.User">
         update user1 set id=#{id},uname=#{uname},upwd=#{upwd},type=#{type} where id=#{id}

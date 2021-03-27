@@ -13,9 +13,9 @@ $(document).ready(function () {
 function initGoods() {
     $.ajax({
         type: "POST",
-        url: "goods/findAll.do",
+        url: "/goods/findAll.do",
         dataType: "json",
-        data: {},
+        data: {"rank": 0},
         success: function (res) {
             var len = Math.min(res.length, 8);
             for (var i = 0; i < len; i++) {
