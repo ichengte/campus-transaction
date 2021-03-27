@@ -27,10 +27,12 @@ function initUserInfo(username){
 			var grade = res.grade;
 			var sex = res.sex;
 			var balance = res.balance;
+			var credit = res.credit;
 			// alert(balance);
 			var str1 = '<div id="account_info"><h2>账户信息</h2>' +
 					'<ul class="infos" id="uuid"><li>真实姓名</li><li class="right_info">'+realname+'</li></ul>' +
-					'<ul class="infos" id="userstate"><li>余额</li><li class="right_info">'+balance+'</li></ul></div>';
+					'<ul class="infos" id="balance"><li>余额</li><li class="right_info">'+balance+'</li></ul></div>' +
+					'<ul class="infos" id="credit"><li>信用分</li><li class="right_info">'+credit+'</li></ul></div>';
 			var str2 = '<div id="base_info">' +
 			'<h2>基本信息<span id="edit_info">编辑</span><span id="save_info">保存</span></h2>' +
 			'<ul class="infos"><li>用户名</li><li class="right_info"><span id="username_span">'+username+'</span><input value="'+username+'" id="username" type="text" name="username" disabled></li></ul> '+

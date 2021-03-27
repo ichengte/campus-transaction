@@ -27,14 +27,14 @@ $(function(){
 });
 
 
-function showSearchRes(word){
+function showSearchRes(keyword){
 	$.ajax({
 		type:"POST",
 		url:"productSearchServlet",
 		dataType:"json",
-		data:{"keyword":word},
+		data:{"keyword":keyword},
 		success:function(res){
-			if(res.length === 0){
+			if(res.length == 0){
 				alert("没有查到您要的商品，建议到【全部商品】浏览。")
 			} else {
 					for(var i = 0; i < res.length; i++){
@@ -46,9 +46,9 @@ function showSearchRes(word){
 		                        +' <a href="goods_detail.jsp?gid='+res[i].gid+'" target="_top">'+res[i].title+'</a>'
 		                        +' </div>'
 		                        +' <div class="department"><span>原价：'+res[i].buy_price+'</span></div>'
-		                        +' <div class="place"><span>上架时间：'+res[i].publish+'</span></div>'
+		                        +' <div class="place"><span>上架时间：'+res[i].publish_time+'</span></div>'
 		                        +' </div>'
-		                 +' </li>&nbsp' )
+		                 +'</li>&nbsp');
 				 }
 			}
 		}

@@ -43,7 +43,7 @@
                     <a href="${pageContext.request.contextPath}/common/goods_list.jsp?rank=publish_time">
                         <div class="rank-title default" data-rank="1">时间</div>
                     </a>
-                    <a href="${pageContext.request.contextPath}/common/goods_list.jsp?rank=points">
+                    <a href="${pageContext.request.contextPath}/common/goods_list.jsp?rank=credit">
                         <div class="rank-title cred" data-rank="3">信用</div>
                     </a>
                     <a class="pr rank-title-price" href="${pageContext.request.contextPath}/common/goods_list.jsp?rank=price">
@@ -59,15 +59,15 @@
             <div class="item-list">
                 <ul class="items clearfix">
                       
-                      <li class="item">
-                        <a href="http://hust.2shoujie.com/goods/185614.html" class="img" target="_top"><img src="ios_default_1494065510_107750_0" alt="美利达勇士600山地自行车低价转让"></a>
-                        <div class="info">
-                            <div class="price">400</div>
-                            <div class="name"><a href="http://hust.2shoujie.com/goods/185614.html" target="_top">美利达勇士600山地自行车低价转让</a></div>
-                            <div class="department"><span>研究生14级(未认证)</span></div>
-                            <div class="place"><span>全校</span></div>
-                        </div>
-                    </li>
+<%--                      <li class="item">--%>
+<%--                        <a href="http://hust.2shoujie.com/goods/185614.html" class="img" target="_top"><img src="ios_default_1494065510_107750_0" alt="美利达勇士600山地自行车低价转让"></a>--%>
+<%--                        <div class="info">--%>
+<%--                            <div class="price">400</div>--%>
+<%--                            <div class="name"><a href="http://hust.2shoujie.com/goods/185614.html" target="_top">美利达勇士600山地自行车低价转让</a></div>--%>
+<%--                            <div class="department"><span>研究生14级(未认证)</span></div>--%>
+<%--                            <div class="place"><span>全校</span></div>--%>
+<%--                        </div>--%>
+<%--                    </li>--%>
 
                                        
                 </ul>

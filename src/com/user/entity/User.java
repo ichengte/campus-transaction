@@ -12,30 +12,50 @@ public class User {
 	private String userpwd;
 	private String realname;
 	private String sex;
-
-	@Override
-	public String toString() {
-		return "User{" +
-				"uuid=" + uuid +
-				", username='" + username + '\'' +
-				", userpwd='" + userpwd + '\'' +
-				", realname='" + realname + '\'' +
-				", sex='" + sex + '\'' +
-				", academy='" + academy + '\'' +
-				", grade='" + grade + '\'' +
-				", qq='" + qq + '\'' +
-				", phone='" + phone + '\'' +
-				", profile='" + profile + '\'' +
-				", balance=" + balance +
-				'}';
-	}
-
 	private String academy;
 	private String grade;
 	private String qq;
 	private String phone;
 	private String profile;
 	private float balance;
+	private int credit;
+
+	public int getCredit() {
+		return credit;
+	}
+
+	public User(String username, String userpwd, String realname, String sex, String academy, String grade, String qq, String phone, String profile, float balance, int credit) {
+		this.username = username;
+		this.userpwd = userpwd;
+		this.realname = realname;
+		this.sex = sex;
+		this.academy = academy;
+		this.grade = grade;
+		this.qq = qq;
+		this.phone = phone;
+		this.profile = profile;
+		this.balance = balance;
+		this.credit = credit;
+	}
+
+	public User(int uuid, String username, String userpwd, String realname, String sex, String academy, String grade, String qq, String phone, String profile, float balance, int credit) {
+		this.uuid = uuid;
+		this.username = username;
+		this.userpwd = userpwd;
+		this.realname = realname;
+		this.sex = sex;
+		this.academy = academy;
+		this.grade = grade;
+		this.qq = qq;
+		this.phone = phone;
+		this.profile = profile;
+		this.balance = balance;
+		this.credit = credit;
+	}
+
+	public void setCredit(int credit) {
+		this.credit = credit;
+	}
 
 	public User() {
 	}
@@ -65,6 +85,24 @@ public class User {
 		this.phone = phone;
 		this.profile = profile;
 		this.balance = balance;
+	}
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"uuid=" + uuid +
+				", username='" + username + '\'' +
+				", userpwd='" + userpwd + '\'' +
+				", realname='" + realname + '\'' +
+				", sex='" + sex + '\'' +
+				", academy='" + academy + '\'' +
+				", grade='" + grade + '\'' +
+				", qq='" + qq + '\'' +
+				", phone='" + phone + '\'' +
+				", profile='" + profile + '\'' +
+				", balance=" + balance +
+				", credit=" + credit +
+				'}';
 	}
 
 	public int getUuid() {
