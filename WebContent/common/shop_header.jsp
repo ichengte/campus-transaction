@@ -46,7 +46,7 @@
 <body>
 <header class="ease2">
     <a href="http://localhost:8050/">
-        <img class="logo ease2" src="../images/1.png" width="150px" height="150px" alt="校园二手街">
+        <img class="logo ease2" src="../images/1.png" alt="校园二手街">
     </a>
     <div class="header-main center ease2">
         <a href="http://localhost:8080/" class="slogan">
@@ -58,7 +58,7 @@
             <div class="search-box center">
                 <button class="search-submit" id="search-button">搜索</button>
                 <div class="input-wr">
-                    <img class="search-icon" src="../images/search-icon.png">
+                    <img class="search-icon" src="../images/search-icon.png" alt="">
                     <div class="search-input">
                         <label for="keyword"></label><input name="keyword" id="keyword" x-webkit-speech=""
                                                             placeholder="搜索你想要的商品" value="" type="text">
@@ -68,16 +68,16 @@
 
             <div class="search-hots center ease2">
                 <span>热门：</span>
-                <a class="hots" href="goods_list.jsp?cat=101" target="_top">手机</a>
-                <a class="hots" href="goods_list.jsp?cat=101" target="_top">笔记本</a>
-                <a class="hots" href="goods_list.jsp?cat=101" target="_top">乐器</a>
-                <a class="hots" href="goods_list.jsp?cat=101" target="_top">图书</a>
+                <a class="hots" href="goods_list.jsp?category=101" target="_top">手机</a>
+                <a class="hots" href="goods_list.jsp?category=101" target="_top">笔记本</a>
+                <a class="hots" href="goods_list.jsp?category=101" target="_top">乐器</a>
+                <a class="hots" href="goods_list.jsp?category=101" target="_top">图书</a>
             </div>
         </div>
         <%-- <input   type="text" value="${sessionScope.user.id}"> --%>
         <div class="ease2 log-reg" id="have-not-login">
             <!-- loginandrigist -->
-            <div class="button"><a href="/user-login.jsp">登录</a></div>
+            <div class="button"><a href="${pageContext.request.contextPath}/user-login.jsp">登录</a></div>
         </div>
     </div>
 </header>
@@ -85,15 +85,16 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        var username = "${sessionScope.user.realname}";
+        var username = "${sessionScope.user.username}";
+        var realname = "${sessionScope.user.realname}";
         var profile = "${sessionScope.user.profile}";
         var id = "${sessionScope.user.uuid}";
 
         if (id !== "" && id != null) {
             $("#have-not-login").html("");
             var str = $('<div id="have_login" class="clearfix"><div id="person_info" class="clearfix">' +
-                '<a href="user_center.jsp?id=' + id + '"><img  class="avatar"  style="height:48px;width:48px; border-radius: 50%;" src="/user/' + profile + '" alt="profile"></a>' +
-                '<div  style="display:inline;"  class="person_name"><a style="font-size: 20px" href="user_center.jsp?id=' + id + '" id="id-btn">Hi,' + username + '</a></div>' +
+                '<a href="/common/user_center.jsp?username=' + username + '"><img  class="avatar"  style="height:48px;width:48px; border-radius: 50%;" src="/user/' + profile + '" alt="profile"></a>' +
+                '<div  style="display:inline;"  class="person_name"><a style="font-size: 20px" href="${pageContext.request.contextPath}/common/user_center.jsp?username=' + username + '" id="id-btn">Hi,' + realname + '</a></div>' +
                 '<div class="btn-primary btn" style="display:inline;" id="login-out-btn"><a href="/user/loginOut.do">&nbsp;&nbsp;退出</a></div>' +
                 '</div> </div>')
             $("#have-not-login").append(str)

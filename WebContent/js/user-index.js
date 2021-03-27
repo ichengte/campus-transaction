@@ -17,14 +17,15 @@ function initGoods() {
         dataType: "json",
         data: {},
         success: function (res) {
-            for (var i = 0; i < res.length; i++) {
+            var len = Math.min(res.length, 8);
+            for (var i = 0; i < len; i++) {
                 if (res[i].recommendation === 1) {
                     res[i].recommendation = "推荐";
                 } else {
                     res[i].recommendation = "新品";
                 }
             }
-            var len = Math.min(res.length, 8);
+
 			var str = "";
             for (var i = 0; i < len; i++) {
 				// alert(i);

@@ -10,6 +10,8 @@ package com.user.service;
 import com.user.entity.User;
 
 public interface UserService {
-	public User login(String usename, String userpwd);
-	public Boolean register(User user);
+	User login(String usename, String userpwd);
+	Boolean register(User user);
+	User findByUsername(String username);
+	Boolean saveInfo(User user);
 }

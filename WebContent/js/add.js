@@ -53,31 +53,35 @@ function edit_info(){
         })
     });
     $("#save_info").bind('click',function(){
-        var nickname = $("#nickname").val(),
-            tel = $("#tel").val(),
+        var username = $("#username").val(),
+            phone = $("#phone").val(),
             qq = $("#qq").val(),
-            college=$("#col").val(),
+            academy=$("#academy").val(),
             grade=$("#grade").val(),
-            area=$("#area").val()
+            sex=$("#sex").val()
+        // alert(qq);
         $.post(
-            'useredit',
+            '/user/saveInfo.do',
             {
-                name : nickname,
+                username : username,
                 qq : qq,
-                tel : tel,
-                college:college,
+                phone : phone,
+                academy:academy,
                 grade:grade,
-                area:area
+                sex:sex
             },
-            function(resp) {
-                
+            function(res) {
+                if (!(res.success)){
+                    alert("保存失败，请重新操作！");
+                    location.reload();
+                    return;
+                }
                 $("#qq_span").text(qq);
-                $("#tel_span").text(tel);
-                $("#nickname_span").text(nickname);
-                $("#col_span").text(college);
+                $("#phone_span").text(phone);
+                $("#username_span").text(username);
+                $("#academy_span").text(academy);
                 $("#grade_span").text(grade);
-                $("#area_span").text(area);
-                alert(resp);
+                $("#sex_span").text(sex);
                 $("#save_info").css({
                     display: "none"
                 });

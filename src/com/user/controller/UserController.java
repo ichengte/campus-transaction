@@ -50,26 +50,43 @@ public class UserController {
 
 		User user = userDto.getUser();
 		user.setProfile(profile);
-		System.out.println(user);
+//		System.out.println(user);
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		if (userService.register(user)){
 			map.put("success", 1);
-//			System.out.println("注册成功");
 		} else {
 			map.put("success", 0);
-//			System.out.println("注册失败");
 		}
 		return map;
 	}
 
 	@RequestMapping(value="/loginOut.do")
-//	@ResponseBody
 	public Object  loginOut(HttpSession session){
-		HashMap<String, Object> map = new HashMap<>();
 		session.removeAttribute("user");
-		map.put("success", 1);
 		return "user-index";
+	}
+
+	@RequestMapping(value = "/findByUsername.do")
+	@ResponseBody
+	public User findByUsername(String username){
+//		System.out.println(username);
+		User user = userService.findByUsername(username);
+//		System.out.println(user);
+		return user;
+	}
+
+	@RequestMapping(value = "/saveInfo.do")
+	@ResponseBody
+	public Object saveInfo(User user){
+		System.out.println(user);
+		HashMap<String, Object> map = new HashMap<>();
+		if (userService.saveInfo(user)){
+			map.put("success", 1);
+		} else {
+			map.put("success", 0);
+		}
+		return map;
 	}
 
 }

@@ -4,11 +4,11 @@ import com.goods.entity.Goods;
 import com.goods.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -31,6 +31,7 @@ public class GoodsController {
         session.setAttribute("goodsList", goodsList);
         return goodsList;
     }
+
     @RequestMapping(value = "/findByPage.do")
     public String findByPage(Integer index, HttpSession session){
         if (index == null) {
@@ -39,10 +40,42 @@ public class GoodsController {
         List<Goods> goodsList = goodsService.findByPage(index);
         session.setAttribute("goodsList", goodsList);
         session.setAttribute("index", index);
-        System.out.println(goodsList.size());
+//        System.out.println(goodsList.size());
         return "user-index";
     }
 
+    @RequestMapping(value = "findUserGoods.do")
+    @ResponseBody
+    public List<Goods> findUserGoods(String username){
+//        System.out.println(username);
+        List<Goods> goodsList = goodsService.findUserGoods(username);
+//        System.out.println(goodsList);
+        return goodsList;
+    }
 
+    @RequestMapping(value = "/modifyStatus.do")
+    @ResponseBody
+    public Object modifyStatus(Integer gid, Integer status){
+        System.out.println("offShelf:" + gid);
+        HashMap<String, Object> map = new HashMap<>();
+        if (goodsService.modifyStatus(gid, status)){
+            map.put("success", 1);
+        } else {
+            map.put("success", 0);
+        }
+        return map;
+    }
+
+    @RequestMapping(value = "/refresh.do")
+    @ResponseBody
+    public Object refresh(Integer gid){
+        HashMap<String, Object> map = new HashMap<>();
+        if (goodsService.refresh(gid)){
+            map.put("success", 1);
+        } else {
+            map.put("success", 0);
+        }
+        return map;
+    }
 
 }

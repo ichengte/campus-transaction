@@ -19,7 +19,8 @@ public interface UserMapper {
 	 * @param userpwd
 	 * @return User
 	 */
-	public User login(@Param("username") String username,@Param("userpwd") String userpwd); 
-	public Boolean register(User user);
-	
+	User login(@Param("username") String username, @Param("userpwd") String userpwd);
+	Boolean register(User user);
+	User findByUsername(String username);
+	Boolean saveInfo(User user);
 }

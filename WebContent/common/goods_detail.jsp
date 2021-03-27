@@ -29,7 +29,7 @@
 $(document).ready(function(){
 
 $("#buy-button").click(function(){
-	var str="${sessionScope.user.name}"
+	var str="${sessionScope.user.username}"
 	if(!str){
 		alert("请您先登录");
 		window.location.href="login.jsp";

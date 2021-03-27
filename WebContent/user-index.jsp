@@ -53,11 +53,11 @@
             <ul class="items clearfix">
                 <c:forEach items="${goodsList}" var="g">
                     <li class="item">
-                        <a style="padding-left: 47px;" href="common/goods_detail.jsp?gid=' + ${g.gid} + '" target="_top"><img id="pro_img" src="/goods/${g.picture }" alt="${g.title }"></a>
+                        <a style="padding-left: 47px;" href="${pageContext.request.contextPath}/common/goods_detail.jsp?gid=' + ${g.gid} + '" target="_top"><img id="pro_img" src="/goods/${g.picture }" alt="${g.title }"></a>
                         <div class="info">
                             <div class="price">"${g.sell_price }"</div>
                             <div class="name">
-                                <a style="padding-left: 47px;" href="goods_detail.jsp?gid=' + ${g.gid} + '" target="_top">${g.title }</a>
+                                <a style="padding-left: 47px;" href="${pageContext.request.contextPath}/common/goods_detail.jsp?gid=' + ${g.gid} + '" target="_top">${g.title }</a>
                             </div>
 
                             <div class="department" style="text-align: left"><span>原价：￥${g.buy_price}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>现价：￥${sell_price}</span></div>

@@ -18,20 +18,16 @@
          insert into tony_user(username, userpwd, realname, sex, academy, grade, qq, phone, profile)
                     values(#{username},#{userpwd},#{realname},#{sex},#{academy},#{grade},#{qq},#{phone},#{profile})
     </insert>
-    
-    <!-- 分页查询 -->
-    <select id="findPage" resultType="com.user.entity.User">
-         <![CDATA[
-          select d.* from
-          (select u.*,rownum r from user1 u) d 
-          where r>(#{index}-1)*#{size} and r<=#{index}*#{size}
-         ]]>
+
+    <!-- 根据username查找 -->
+    <select id="findByUsername" resultType="com.user.entity.User">
+        select * from tony_user where username=#{username}
     </select>
-    
-    <!-- 查询总记录 -->
-    <select id="countPage" resultType="int">
-         select count(*) from user1
-    </select>
+
+    <update id="saveInfo" parameterType="com.user.entity.User">
+        update tony_user set qq=#{qq},phone=#{phone},academy=#{academy},grade=#{grade},sex=#{sex} where username=#{username}
+    </update>
+
     
     <sql id="find1">
          select d.* from
@@ -70,10 +66,7 @@
         delete from user1 where id=#{id}
     </delete>
     
-    <!-- 根据id查找 -->
-    <select id="findById" resultType="com.user.entity.User">
-        select * from user1 where id=#{id}
-    </select>
+
     
     <!-- 修改 -->
     <update id="update" parameterType="com.user.entity.User">

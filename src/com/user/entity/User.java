@@ -12,13 +12,48 @@ public class User {
 	private String userpwd;
 	private String realname;
 	private String sex;
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"uuid=" + uuid +
+				", username='" + username + '\'' +
+				", userpwd='" + userpwd + '\'' +
+				", realname='" + realname + '\'' +
+				", sex='" + sex + '\'' +
+				", academy='" + academy + '\'' +
+				", grade='" + grade + '\'' +
+				", qq='" + qq + '\'' +
+				", phone='" + phone + '\'' +
+				", profile='" + profile + '\'' +
+				", balance=" + balance +
+				'}';
+	}
+
 	private String academy;
 	private String grade;
 	private String qq;
 	private String phone;
 	private String profile;
+	private float balance;
 
-	public User(int uuid, String username, String userpwd, String realname, String sex, String academy, String grade, String qq, String phone, String profile) {
+	public User() {
+	}
+
+	public User(String username, String userpwd, String realname, String sex, String academy, String grade, String qq, String phone, String profile, float balance) {
+		this.username = username;
+		this.userpwd = userpwd;
+		this.realname = realname;
+		this.sex = sex;
+		this.academy = academy;
+		this.grade = grade;
+		this.qq = qq;
+		this.phone = phone;
+		this.profile = profile;
+		this.balance = balance;
+	}
+
+	public User(int uuid, String username, String userpwd, String realname, String sex, String academy, String grade, String qq, String phone, String profile, float balance) {
 		this.uuid = uuid;
 		this.username = username;
 		this.userpwd = userpwd;
@@ -29,18 +64,7 @@ public class User {
 		this.qq = qq;
 		this.phone = phone;
 		this.profile = profile;
-	}
-
-	public User(String username, String userpwd, String realname, String sex, String academy, String grade, String qq, String phone, String profile) {
-		this.username = username;
-		this.userpwd = userpwd;
-		this.realname = realname;
-		this.sex = sex;
-		this.academy = academy;
-		this.grade = grade;
-		this.qq = qq;
-		this.phone = phone;
-		this.profile = profile;
+		this.balance = balance;
 	}
 
 	public int getUuid() {
@@ -123,22 +147,11 @@ public class User {
 		this.profile = profile;
 	}
 
-	@Override
-	public String toString() {
-		return "User{" +
-				"uuid=" + uuid +
-				", username='" + username + '\'' +
-				", userpwd='" + userpwd + '\'' +
-				", realname='" + realname + '\'' +
-				", sex='" + sex + '\'' +
-				", academy='" + academy + '\'' +
-				", grade='" + grade + '\'' +
-				", qq='" + qq + '\'' +
-				", phone='" + phone + '\'' +
-				", profile='" + profile + '\'' +
-				'}';
+	public float getBalance() {
+		return balance;
 	}
 
-	public User() {
+	public void setBalance(float balance) {
+		this.balance = balance;
 	}
 }

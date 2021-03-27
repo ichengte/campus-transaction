@@ -36,7 +36,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object arg2) throws Exception {
         String url = request.getRequestURI();
-        System.out.println(url);
+//        System.out.println(url);
         if (url.indexOf("login.do") > 0) {
             return true;
         }
@@ -52,6 +52,21 @@ public class LoginInterceptor implements HandlerInterceptor {
         }
         if (url.indexOf("findByPage.do") > 0){
             response.sendRedirect("/user-index.jsp");
+            return true;
+        }
+        if (url.indexOf("findByUsername.do") > 0){
+            return true;
+        }
+        if (url.indexOf("findUserGoods.do") > 0){
+            return true;
+        }
+        if (url.indexOf("modifyStatus.do") > 0){
+            return true;
+        }
+        if (url.indexOf("refresh.do") > 0){
+            return true;
+        }
+        if (url.indexOf("saveInfo.do") > 0){
             return true;
         }
         response.sendRedirect("/user-login.jsp");

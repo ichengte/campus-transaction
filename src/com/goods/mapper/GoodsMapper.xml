@@ -33,7 +33,7 @@
     <!-- findAll -->
     <select id="findAll" resultMap="goodsResult">
         select g.*, u.uuid, u.realname, c.cid, c.name from tony_user u, tony_goods g, tony_category c
-        where g.cid = c.cid and g.uuid = u.uuid
+        where g.cid = c.cid and g.uuid = u.uuid and g.status = 1 order by recommendation desc
     </select>
     <!--    findByPage-->
     <select id="findByPage" resultMap="goodsResult">
@@ -42,8 +42,22 @@
             (select g.gid, g.title, g.publish_time, g.content, g.buy_price, g.sell_price, g.picture, g.views, g.status,
             g.recommendation, u.uuid, u.realname, c.cid, c.name, rownum r from tony_user u, tony_goods g, tony_category c
             where g.cid = c.cid and g.uuid = u.uuid) res
-            where r>(#{index}-1)*8 and r<=#{index}*8
+            where r>(#{index}-1)*8 and r<=#{index}*8 order by recommendation desc
         ]]>
     </select>
+    <select id="findUserGoods" resultMap="goodsResult">
+        select g.* from tony_goods g, tony_user u where g.uuid = u.uuid and u.username=#{username}
+    </select>
 
+    <update id="modifyStatus">
+        update tony_goods set status=#{1} where gid=#{0}
+    </update>
+
+    <update id="refresh">
+        update tony_goods set recommendation=1 where gid=#{gid}
+    </update>
+
+    <update id="sellout">
+        update tony_goods set status=2 where gid=#{gid}
+    </update>
 </mapper>

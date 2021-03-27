@@ -35,5 +35,15 @@ public class UserServiceImpl implements UserService {
 		return userMapper.register(user);
 	}
 
+	@Override
+	public User findByUsername(String username) {
+		return userMapper.findByUsername(username);
+	}
+
+	@Override
+	public Boolean saveInfo(User user) {
+		return userMapper.saveInfo(user);
+	}
+
 
 }

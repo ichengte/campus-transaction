@@ -1,6 +1,8 @@
 package com.goods.service;
 
 import com.goods.entity.Goods;
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import com.user.entity.User;
 
 import java.util.List;
 
@@ -12,4 +14,7 @@ import java.util.List;
 public interface GoodsService {
     List<Goods> findAll();
     List<Goods> findByPage(Integer index);
+    List<Goods> findUserGoods(String username);
+    Boolean modifyStatus(Integer gid, Integer status);
+    Boolean refresh(Integer gid);
 }
