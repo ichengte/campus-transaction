@@ -1,6 +1,7 @@
 package com.goods.controller;
 
 import com.goods.entity.Goods;
+import com.goods.entity.GoodsDto;
 import com.goods.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -117,6 +118,24 @@ public class GoodsController {
         List<Goods> goodsList = goodsService.searchByCategory(category, rank);
 //        System.out.println(goodsList);
         return goodsList;
+    }
+
+    @RequestMapping(value = "publishGoods.do")
+    @ResponseBody
+    public Object publishGoods(GoodsDto goodsDto){
+        Goods goods = goodsDto.getGoods();
+        String picture = goodsDto.getPicture().getOriginalFilename();
+        System.out.println(picture);
+        System.out.println(goods);
+        goods.setPicture(picture);
+
+        HashMap<String, Object> map = new HashMap<>();
+        if (goodsService.publishGoods(goods)){
+            map.put("success", 1);
+        } else {
+            map.put("success", 0);
+        }
+        return map;
     }
 
 }

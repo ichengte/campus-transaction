@@ -1,5 +1,4 @@
 
-var pid;
 
 function getUrlParam(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
@@ -7,16 +6,15 @@ function getUrlParam(name) {
             if (r != null) return unescape(r[2]); 
             return null; //返回参数值
         }
-gid = getUrlParam('gid');
+var gid = getUrlParam('gid');
 
 $(function(){
 	if(!gid){
-		alert(gid);
-		initProducToEdit();
+		initGoodsToEdit();
 	}
 });
 
-function initProducToEdit(){
+function initGoodsToEdit(){
 	$.ajax({
 		type:"POST",
 		url:"productServlet",

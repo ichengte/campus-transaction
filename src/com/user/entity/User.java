@@ -18,6 +18,15 @@ public class User {
 	private String phone;
 	private String profile;
 	private float balance;
+
+	public int getCredit() {
+		return credit;
+	}
+
+	public void setCredit(int credit) {
+		this.credit = credit;
+	}
+
 	private int credit;
 
 	public User(String username, String userpwd, String realname, String sex, String academy, String grade, String qq, String phone, String profile, float balance, int credit) {

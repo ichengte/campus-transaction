@@ -48,14 +48,14 @@
                     if (i == currentShowcid2) {
                         cid2 = $(".cid2").eq(i).val();
                         $("#category-value").val(cid2)
+                        // alert(cid2);
                     }
                 });
 
             });
             $("#cid").change();
-            if (pid) {
+            if (gid) {
                 initProducToEdit();
-
             }
         });
 
@@ -66,22 +66,22 @@
             return null; //返回参数值
         }
 
-        var pid = getUrlParam('pid');
+        var gid = getUrlParam('gid');
 
 
         function initProducToEdit() {
-            $("#pid").val(pid);
+            $("#pid").val(gid);
             $.ajax({
                 type: "POST",
-                url: "productServlet",
+                url: "/goods/findById.do",
                 dataType: "json",
-                data: {"pid": pid},
-                success: function (resp) {
-                    if (resp) {
-                        $("#title").val(resp.pname);
-                        $("#desc").val(resp.pdesc);
-                        $("#buyPrice").val(resp.buyPrice);
-                        $("#salePrice").val(resp.salePrice);
+                data: {"gid": gid},
+                success: function (res) {
+                    if (res) {
+                        $("#title").val(res.title);
+                        $("#desc").val(res.content);
+                        $("#buyPrice").val(res.buy_price);
+                        $("#salePrice").val(res.sell_price);
                     }
                 }
             })
@@ -144,12 +144,11 @@
     <div class="main center">
         <img class="release-icon-main" src="${pageContext.request.contextPath}/images/release-icon.png" alt="">
         <div class="wave-fluid"></div>
-        <div class="release-title">发布商品出售</div>
-        <form action="" enctype="multipart/form-data" method="post">
+        <div class="release-title">发布商品</div>
+        <form action="/goods/publishGoods.do" enctype="multipart/form-data" method="post">
             <div class="form-wr">
                 <div class="form-must-wr">
-
-                    <input id="pid" type="hidden" name="pid" value="">
+                    <input id="pid" type="hidden" name="goods.gid" value="">
                     <div class="form-item l goods-title">
                         <div class="form-key">
                             <span>选择商品图片</span></div>
@@ -165,7 +164,7 @@
                             <span>商品标题</span></div>
                         <div class="form-value">
                             <div class="form-input-wr">
-                                <input id="title" name="title" placeholder="最多10个字" value="" type="text"></div>
+                                <input id="title" name="goods.title" placeholder="最多10个字" value="" type="text"></div>
                         </div>
                     </div>
 
@@ -174,7 +173,7 @@
                             <span>商品详情</span></div>
                         <div class="form-value">
                             <div class="form-input-wr">
-                                <textarea name="content" id="desc" placeholder="建议填写物品用途、新旧程度、原价等信息，至少15个字"></textarea>
+                                <textarea name="goods.content" id="desc" placeholder="建议填写物品用途、新旧程度、原价等信息，至少15个字"></textarea>
                             </div>
                         </div>
                     </div>
@@ -185,7 +184,7 @@
                             <span>购入价格</span></div>
                         <div class="form-value">
                             <div class="form-input-wr">
-                                <input class="price" id="buyPrice" name="buy_price" value="" type="text"></div>
+                                <input class="price" id="buyPrice" name="goods.buy_price" value="" type="text"></div>
                         </div>
                     </div>
                     <div class="form-item m goods-price">
@@ -193,7 +192,7 @@
                             <span>售出价格</span></div>
                         <div class="form-value">
                             <div class="form-input-wr">
-                                <input class="price" id="salePrice" name="sale_price" value="" type="text"></div>
+                                <input class="price" id="salePrice" name="goods.sell_price" value="" type="text"></div>
                         </div>
                     </div>
 
@@ -202,7 +201,7 @@
                     <div class="form-item m goods-cat">
                         <div class="form-key">
                             <span>分类</span>
-                            <input id="category-value" type="hidden" name="category" value="">
+                            <input id="category-value" type="hidden" name="goods.category.cid" value="">
                         </div>
                         <div class="form-value">
                             <div class="form-input-wr">
@@ -282,15 +281,11 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-
                 <input class="form-submit" type="submit" value="上传"/>
             </div>
         </form>
     </div>
 </div>
-
 </body>
 </html>

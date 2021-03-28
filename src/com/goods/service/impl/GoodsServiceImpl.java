@@ -59,4 +59,9 @@ public class GoodsServiceImpl implements GoodsService {
     public List<Goods> searchByCategory(Integer category, String rank) {
         return goodsMapper.searchByCategory(category, rank);
     }
+
+    @Override
+    public Boolean publishGoods(Goods goods) {
+        return goodsMapper.publishGoods(goods);
+    }
 }

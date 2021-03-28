@@ -86,4 +86,10 @@
         where g.cid=c.cid and g.uuid=u.uuid and g.cid=#{0} order by #{1} desc
 
     </select>
+
+    <update id="publishGoods" parameterType="com.goods.entity.Goods">
+        update tony_goods set picture=#{picture},title=#{title},content=#{content},buy_price=#{buy_price},
+        sell_price=#{sell_price},cid=#{category.cid} where gid=#{gid}
+    </update>
+
 </mapper>

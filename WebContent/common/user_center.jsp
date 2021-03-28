@@ -10,6 +10,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+    <script type="text/javascript">
+        username = ${sessionScope.user.username};
+    </script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>个人中心</title>
 
@@ -189,6 +192,13 @@
 <%@ include file="../common/shop_right.jsp" %>
 <%@ include file="../common/shop_footer.jsp" %>
 
+<script type="text/javascript">
+    var str = "${sessionScope.user.username}";
+    if (!str) {
+        alert("请您先登录");
+        location.href = "/user-login.jsp";
+    }
+</script>
 
 </body>
 </html>
