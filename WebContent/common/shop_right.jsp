@@ -34,7 +34,7 @@
     </div>
     <br><br>
     <div id="release-button2">
-        <a href="goods_release.jsp" style="color: white" id="want-sale"> 我要卖</a>
+        <a href="goods_publish.jsp" style="color: white" id="want-sale"> 我要卖</a>
     </div>
     <br><br>
     <div id="release-button3">

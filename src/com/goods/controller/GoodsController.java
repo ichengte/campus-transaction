@@ -40,6 +40,14 @@ public class GoodsController {
         return goodsList;
     }
 
+    @RequestMapping(value = "/findById.do")
+    @ResponseBody
+    public Goods findById(Integer gid){
+        Goods goods = goodsService.findById(gid);
+        System.out.println(goods);
+        return goods;
+    }
+
     @RequestMapping(value = "/findByPage.do")
     public String findByPage(Integer index, HttpSession session){
         if (index == null) {
@@ -107,7 +115,7 @@ public class GoodsController {
             rank = "publish_time";
         }
         List<Goods> goodsList = goodsService.searchByCategory(category, rank);
-        System.out.println(goodsList);
+//        System.out.println(goodsList);
         return goodsList;
     }
 

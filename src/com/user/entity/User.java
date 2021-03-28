@@ -20,10 +20,6 @@ public class User {
 	private float balance;
 	private int credit;
 
-	public int getCredit() {
-		return credit;
-	}
-
 	public User(String username, String userpwd, String realname, String sex, String academy, String grade, String qq, String phone, String profile, float balance, int credit) {
 		this.username = username;
 		this.userpwd = userpwd;
@@ -36,6 +32,9 @@ public class User {
 		this.profile = profile;
 		this.balance = balance;
 		this.credit = credit;
+	}
+
+	public User() {
 	}
 
 	public User(int uuid, String username, String userpwd, String realname, String sex, String academy, String grade, String qq, String phone, String profile, float balance, int credit) {
@@ -51,40 +50,6 @@ public class User {
 		this.profile = profile;
 		this.balance = balance;
 		this.credit = credit;
-	}
-
-	public void setCredit(int credit) {
-		this.credit = credit;
-	}
-
-	public User() {
-	}
-
-	public User(String username, String userpwd, String realname, String sex, String academy, String grade, String qq, String phone, String profile, float balance) {
-		this.username = username;
-		this.userpwd = userpwd;
-		this.realname = realname;
-		this.sex = sex;
-		this.academy = academy;
-		this.grade = grade;
-		this.qq = qq;
-		this.phone = phone;
-		this.profile = profile;
-		this.balance = balance;
-	}
-
-	public User(int uuid, String username, String userpwd, String realname, String sex, String academy, String grade, String qq, String phone, String profile, float balance) {
-		this.uuid = uuid;
-		this.username = username;
-		this.userpwd = userpwd;
-		this.realname = realname;
-		this.sex = sex;
-		this.academy = academy;
-		this.grade = grade;
-		this.qq = qq;
-		this.phone = phone;
-		this.profile = profile;
-		this.balance = balance;
 	}
 
 	@Override

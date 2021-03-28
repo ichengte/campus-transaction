@@ -138,7 +138,7 @@ String.prototype.right = function(i) { //为String对象增加一个Right方法
             default: return false;
         }
     }
-    login_init();
+    // login_init();
 
     var lr = function() {
         var el = $(".log-reg"),

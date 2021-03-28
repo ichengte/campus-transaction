@@ -19,6 +19,7 @@
         <result column="picture" property="picture"/>
         <result column="views" property="views"/>
         <result column="status" property="status"/>
+        <result column="area" property="area"/>
         <result column="recommendation" property="recommendation"/>
         <association property="category" javaType="com.category.entity.Category">
             <id column="cid" property="cid"/>
@@ -28,6 +29,11 @@
             <id column="uuid" property="uuid"/>
             <result column="realname" property="realname"/>
             <result column="credit" property="credit"/>
+            <result column="phone" property="phone"/>
+            <result column="qq" property="qq"/>
+            <result column="academy" property="academy"/>
+            <result column="grade" property="grade"/>
+            <result column="credit" property="credit"/>
         </association>
     </resultMap>
 
@@ -36,6 +42,13 @@
         select g.*, u.uuid, u.realname, c.cid, c.name from tony_user u, tony_goods g, tony_category c
         where g.cid = c.cid and g.uuid = u.uuid and g.status = 1 order by #{0} desc
     </select>
+
+    <!-- findById -->
+    <select id="findById" resultMap="goodsResult">
+        select g.*, u.*, c.* from tony_user u, tony_goods g, tony_category c
+        where g.cid = c.cid and g.uuid = u.uuid and g.gid = #{gid}
+    </select>
+
     <!--    findByPage-->
     <select id="findByPage" resultMap="goodsResult">
         <![CDATA[

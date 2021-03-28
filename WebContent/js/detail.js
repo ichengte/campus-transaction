@@ -1,5 +1,5 @@
 (function(){
-    if($("#want-list").size()==1) return;
+    if($("#want-list").length==1) return;
     var Comment = function() {
         var isRpl = 0,
             inputPrefix = 0,

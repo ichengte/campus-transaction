@@ -19,8 +19,18 @@ public class Goods {
     private float buy_price;
     private float sell_price;
     private Category category = new Category();
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
     private User user = new User();
     private int recommendation;
+    private String area;
 
     public Goods() {
     }

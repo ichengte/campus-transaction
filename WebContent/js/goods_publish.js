@@ -7,24 +7,23 @@ function getUrlParam(name) {
             if (r != null) return unescape(r[2]); 
             return null; //返回参数值
         }
-pid = getUrlParam('pid');
+gid = getUrlParam('gid');
 
 $(function(){
-	if(!pid){
-		aler("pid")
-		//initProducToEdit();
+	if(!gid){
+		alert(gid);
+		initProducToEdit();
 	}
-})
+});
 
 function initProducToEdit(){
 	$.ajax({
 		type:"POST",
 		url:"productServlet",
 		dataType:"json",
-		data:{"pid":pid},
-		success:function(resp){
-		
-		
+		data:{"gid":gid},
+		success:function(res){
+
 		}
 	})
 }

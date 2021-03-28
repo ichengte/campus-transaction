@@ -19,7 +19,7 @@
     <script src="${pageContext.request.contextPath}/js/add.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/hm.js" type="text/javascript"></script>
     <%-- <script src="${pageContext.request.contextPath}/js/common.js"></script> --%>
-    <script src="${pageContext.request.contextPath}/js/common_001.js" type="text/javascript"></script>
+<%--    <script src="${pageContext.request.contextPath}/js/common_001.js" type="text/javascript"></script>--%>
     <script src="${pageContext.request.contextPath}/js/user_center.js" type="text/javascript"></script>
 
 

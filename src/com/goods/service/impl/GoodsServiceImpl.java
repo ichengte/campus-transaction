@@ -26,6 +26,11 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    public Goods findById(Integer gid) {
+        return goodsMapper.findById(gid);
+    }
+
+    @Override
     public List<Goods> findByPage(Integer index) {
         return goodsMapper.findByPage(index);
     }

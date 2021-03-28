@@ -16,7 +16,7 @@
 <body>
 
 <footer>
-    <img class="footer-tri" src="imgs/footer-tri.png">
+    <img class="footer-tri" src="${pageContext.request.contextPath}/images/footer-tri.png">
     <div class="friend-links">
         <div class="links-title center">友情链接</div>
         <ul class="links-wr center">

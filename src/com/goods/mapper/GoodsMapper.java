@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface GoodsMapper {
     List<Goods> findAll(String rank);
+    Goods findById(Integer gid);
     List<Goods> findByPage(Integer index);
     List<Goods> findUserGoods(String username);
     Boolean modifyStatus(Integer gid, Integer status);

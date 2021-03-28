@@ -48,7 +48,7 @@ function showSearchRes(keyword) {
                 var len = Math.min(res.length, 8);
                 for (var i = 0; i < len; i++) {
 
-                    var str = '<li class="item"><a href="common/goods_detail.jsp?gid=' + res[i].gid + '" class="img" target="_top"><img id="pro_img" src="' + '/goods/' + res[i].picture + '" alt="' + res[i].title + '"></a>'
+                    var str = '<li class="item"><a href="/common/goods_detail.jsp?gid=' + res[i].gid + '" class="img" target="_top"><img id="pro_img" src="' + '/goods/' + res[i].picture + '" alt="' + res[i].title + '"></a>'
                         + ' <div class="info">'
                         + ' <div class="price">' + res[i].sell_price + '</div>'
                         + ' <div class="name">'
