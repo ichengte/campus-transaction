@@ -34,5 +34,13 @@ public class UserDto {
     public UserDto() {
     }
 
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "user=" + user +
+                ", file=" + file +
+                '}';
+    }
+
     private MultipartFile file;
 }

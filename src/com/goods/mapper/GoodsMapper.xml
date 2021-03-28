@@ -87,9 +87,14 @@
 
     </select>
 
-    <update id="publishGoods" parameterType="com.goods.entity.Goods">
+    <update id="saveInfo" parameterType="com.goods.entity.Goods">
         update tony_goods set picture=#{picture},title=#{title},content=#{content},buy_price=#{buy_price},
-        sell_price=#{sell_price},cid=#{category.cid} where gid=#{gid}
+        sell_price=#{sell_price},cid=#{category.cid},area=#{area} where gid=#{gid}
     </update>
+
+    <insert id="goodsPublish" parameterType="com.goods.entity.Goods">
+        insert into tony_goods(title,publish_time,content,buy_price,sell_price,picture,cid,uuid,area)
+        values(#{title},#{publish_time},#{content},#{buy_price},#{sell_price},#{picture},#{category.cid},#{user.uuid},#{area})
+    </insert>
 
 </mapper>

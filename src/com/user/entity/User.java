@@ -7,7 +7,7 @@
 
 package com.user.entity;
 public class User {
-	private int uuid;
+	private Integer uuid;
 	private String username;
 	private String userpwd;
 	private String realname;
@@ -18,48 +18,7 @@ public class User {
 	private String phone;
 	private String profile;
 	private float balance;
-
-	public int getCredit() {
-		return credit;
-	}
-
-	public void setCredit(int credit) {
-		this.credit = credit;
-	}
-
-	private int credit;
-
-	public User(String username, String userpwd, String realname, String sex, String academy, String grade, String qq, String phone, String profile, float balance, int credit) {
-		this.username = username;
-		this.userpwd = userpwd;
-		this.realname = realname;
-		this.sex = sex;
-		this.academy = academy;
-		this.grade = grade;
-		this.qq = qq;
-		this.phone = phone;
-		this.profile = profile;
-		this.balance = balance;
-		this.credit = credit;
-	}
-
-	public User() {
-	}
-
-	public User(int uuid, String username, String userpwd, String realname, String sex, String academy, String grade, String qq, String phone, String profile, float balance, int credit) {
-		this.uuid = uuid;
-		this.username = username;
-		this.userpwd = userpwd;
-		this.realname = realname;
-		this.sex = sex;
-		this.academy = academy;
-		this.grade = grade;
-		this.qq = qq;
-		this.phone = phone;
-		this.profile = profile;
-		this.balance = balance;
-		this.credit = credit;
-	}
+	private Integer credit;
 
 	@Override
 	public String toString() {
@@ -79,11 +38,51 @@ public class User {
 				'}';
 	}
 
-	public int getUuid() {
+	public User(String username, String userpwd, String realname, String sex, String academy, String grade, String qq, String phone, String profile, float balance, Integer credit) {
+		this.username = username;
+		this.userpwd = userpwd;
+		this.realname = realname;
+		this.sex = sex;
+		this.academy = academy;
+		this.grade = grade;
+		this.qq = qq;
+		this.phone = phone;
+		this.profile = profile;
+		this.balance = balance;
+		this.credit = credit;
+	}
+
+	public User(Integer uuid, String username, String userpwd, String realname, String sex, String academy, String grade, String qq, String phone, String profile, float balance, Integer credit) {
+		this.uuid = uuid;
+		this.username = username;
+		this.userpwd = userpwd;
+		this.realname = realname;
+		this.sex = sex;
+		this.academy = academy;
+		this.grade = grade;
+		this.qq = qq;
+		this.phone = phone;
+		this.profile = profile;
+		this.balance = balance;
+		this.credit = credit;
+	}
+
+	public Integer getCredit() {
+		return credit;
+	}
+
+	public void setCredit(Integer credit) {
+		this.credit = credit;
+	}
+
+	public User() {
+	}
+
+	public Integer getUuid() {
 		return uuid;
 	}
 
-	public void setUuid(int uuid) {
+	public void setUuid(Integer uuid) {
 		this.uuid = uuid;
 	}
 
@@ -164,6 +163,33 @@ public class User {
 	}
 
 	public void setBalance(float balance) {
+		this.balance = balance;
+	}
+
+	public User(String username, String userpwd, String realname, String sex, String academy, String grade, String qq, String phone, String profile, float balance) {
+		this.username = username;
+		this.userpwd = userpwd;
+		this.realname = realname;
+		this.sex = sex;
+		this.academy = academy;
+		this.grade = grade;
+		this.qq = qq;
+		this.phone = phone;
+		this.profile = profile;
+		this.balance = balance;
+	}
+
+	public User(Integer uuid, String username, String userpwd, String realname, String sex, String academy, String grade, String qq, String phone, String profile, float balance) {
+		this.uuid = uuid;
+		this.username = username;
+		this.userpwd = userpwd;
+		this.realname = realname;
+		this.sex = sex;
+		this.academy = academy;
+		this.grade = grade;
+		this.qq = qq;
+		this.phone = phone;
+		this.profile = profile;
 		this.balance = balance;
 	}
 }

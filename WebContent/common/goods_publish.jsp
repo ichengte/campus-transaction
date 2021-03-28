@@ -3,38 +3,69 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+    <script type="text/javascript">
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]);
+            return null; //返回参数值
+        }
+
+        editt = getUrlParam('edit');
+        // alert(editt);
+    </script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>商品发布表单</title>
+    <title>商品发布</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-form.js"></script>
     <script src="../js/hm.js" type="text/javascript"></script>
     <script src="../js/add.js" type="text/javascript"></script>
     <script src="../js/release.js" type="text/javascript"></script>
     <script src="../js/c.js" type="text/javascript"></script>
     <script src="../js/common.js" type="text/javascript"></script>
-
     <script src="../js/zh_cn.js" type="text/javascript"></script>
     <script src="../js/qiniu.min.js" type="text/javascript"></script>
     <script src="../js/plupload.full.min.js" type="text/javascript"></script>
-
-
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/goods_publish.js"></script>
-
     <!-- <script  src="js/jquery-3.1.1.min.js"></script> -->
-
-
     <link media="all" href="${pageContext.request.contextPath}/css/goods_publish.css" type="text/css" rel="stylesheet">
     <link media="all" href="${pageContext.request.contextPath}/css/index.css" type="text/css" rel="stylesheet">
 
     <script type="text/javascript">
-        var str = "${sessionScope.user.username}"
+        var str = "${sessionScope.user.username}";
         if (!str) {
             alert("请您先登录");
             window.location.href = "/user-login.jsp";
         }
 
+
         var cid2 = 0;
         var currentShowcid2 = 0;
         $(document).ready(function () {
+            $('.form-submit').bind("click", function () {
+                // var data = $('#goodsPublish').serialize();
+                // alert(data);
+                // alert(editt);
+                if (editt == 1) {
+                    $('#goodsPublish').ajaxSubmit({
+                        method: 'POST',
+                        url: "/goods/saveInfo.do",
+                        dataType: 'json',
+                        success: function (res) {
+                            if (res.success) {
+                                alert("保存成功");
+                                // location.href = "/common/user_center.jsp"
+                            } else {
+                                alert("保存失败，请重新尝试！");
+                            }
+                        }
+                    })
+                } else {
+                    alert($('#goodsPublish').serialize());
+                    $('#goodsPublish').submit();
+                }
+
+            });
             $("#cid").change(function () {
                 $("#cid option").each(function (i, o) {
                     if ($(this).attr("selected")) {
@@ -68,7 +99,6 @@
 
         var gid = getUrlParam('gid');
 
-
         function initProducToEdit() {
             $("#pid").val(gid);
             $.ajax({
@@ -82,6 +112,9 @@
                         $("#desc").val(res.content);
                         $("#buyPrice").val(res.buy_price);
                         $("#salePrice").val(res.sell_price);
+                        $("#area").val(res.area);
+                        $("#pid").val(res.gid);
+                        $("#uuid").val(res.user.uuid);
                     }
                 }
             })
@@ -145,10 +178,11 @@
         <img class="release-icon-main" src="${pageContext.request.contextPath}/images/release-icon.png" alt="">
         <div class="wave-fluid"></div>
         <div class="release-title">发布商品</div>
-        <form action="/goods/publishGoods.do" enctype="multipart/form-data" method="post">
+        <form action="/goods/goodsPublish.do" id="goodsPublish" enctype="multipart/form-data" method="post">
             <div class="form-wr">
                 <div class="form-must-wr">
                     <input id="pid" type="hidden" name="goods.gid" value="">
+                    <input id="uuid" type="hidden" name="goods.user.uuid" value="${sessionScope.user.uuid}">
                     <div class="form-item l goods-title">
                         <div class="form-key">
                             <span>选择商品图片</span></div>
@@ -173,7 +207,8 @@
                             <span>商品详情</span></div>
                         <div class="form-value">
                             <div class="form-input-wr">
-                                <textarea name="goods.content" id="desc" placeholder="建议填写物品用途、新旧程度、原价等信息，至少15个字"></textarea>
+                                <textarea name="goods.content" id="desc"
+                                          placeholder="建议填写物品用途、新旧程度、原价等信息，至少15个字"></textarea>
                             </div>
                         </div>
                     </div>
@@ -193,6 +228,14 @@
                         <div class="form-value">
                             <div class="form-input-wr">
                                 <input class="price" id="salePrice" name="goods.sell_price" value="" type="text"></div>
+                        </div>
+                    </div>
+                    <div class="form-item m goods-title">
+                        <div class="form-key">
+                            <span>交易地点</span></div>
+                        <div class="form-value">
+                            <div class="form-input-wr">
+                                <input class="price" id="area" name="goods.area" value="" type="text"></div>
                         </div>
                     </div>
 
@@ -282,7 +325,7 @@
                         </div>
                     </div>
                 </div>
-                <input class="form-submit" type="submit" value="上传"/>
+                <input class="form-submit" type="button" value="上传"/>
             </div>
         </form>
     </div>

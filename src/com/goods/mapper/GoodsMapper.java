@@ -20,5 +20,6 @@ public interface GoodsMapper {
     Boolean refresh(Integer gid);
     List<Goods> searchByKeywords(String keyword, String rank);
     List<Goods> searchByCategory(Integer category, String rank);
-    Boolean publishGoods(Goods goods);
+    Boolean saveInfo(Goods goods);
+    Boolean goodsPublish(Goods goods);
 }

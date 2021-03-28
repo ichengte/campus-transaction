@@ -78,7 +78,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         if (url.indexOf("findById.do") > 0){
             return true;
         }
-        if (url.indexOf("publishGoods") > 0){
+        if (url.indexOf("goodsPublish.do") > 0){
             return true;
         }
         response.sendRedirect("/user-login.jsp");

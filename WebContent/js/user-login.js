@@ -225,7 +225,7 @@ $(document).ready(function () {
         // $('#regForm').submit();
         $("#regForm").ajaxSubmit({
             type : "POST",
-            url : "user/register.do",
+            url : "/user/register.do",
             dataType : "json",
             success : function(res) {
                 if (res.success){

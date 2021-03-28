@@ -29,12 +29,12 @@
 
     <div id="release-button1">
         <a href="want_list_creat.jsp" style="color: white" id="want-buy"
-           onclick="return ${session.user.name} "> 我要买</a>
+           onclick="return ${session.user.username} "> 我要买</a>
         <!-- <a  href="#" style="color: white" id="want-buy"> 我要买</a> -->
     </div>
     <br><br>
     <div id="release-button2">
-        <a href="goods_publish.jsp" style="color: white" id="want-sale"> 我要卖</a>
+        <a href="${pageContext.request.contextPath}/common/goods_publish.jsp?edit=0" style="color: white" id="want-sale"> 我要卖</a>
     </div>
     <br><br>
     <div id="release-button3">

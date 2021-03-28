@@ -6,10 +6,11 @@ package com.category.entity;
  * Date: 2021/3/24 17:20
  */
 public class Category {
-    private int cid;
+    private Integer cid;
     private String name;
 
-    public Category(String name) {
+    public Category(Integer cid, String name) {
+        this.cid = cid;
         this.name = name;
     }
 
@@ -21,14 +22,11 @@ public class Category {
                 '}';
     }
 
-    public Category() {
-    }
-
-    public int getCid() {
+    public Integer getCid() {
         return cid;
     }
 
-    public void setCid(int cid) {
+    public void setCid(Integer cid) {
         this.cid = cid;
     }
 
@@ -40,8 +38,6 @@ public class Category {
         this.name = name;
     }
 
-    public Category(int cid, String name) {
-        this.cid = cid;
-        this.name = name;
+    public Category() {
     }
 }

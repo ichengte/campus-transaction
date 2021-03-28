@@ -43,7 +43,7 @@ public class UserController {
 
 		MultipartFile file = userDto.getFile();
 		String profile = file.getOriginalFilename();
-		System.out.println(profile);
+//		System.out.println(profile);
 
 		File filepath = new File("C:/GitHub/campus-transaction/WebContent/user/" + profile);
 		file.transferTo(filepath);

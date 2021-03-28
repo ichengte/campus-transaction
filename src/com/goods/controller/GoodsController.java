@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Author: TonyJam
@@ -120,17 +120,49 @@ public class GoodsController {
         return goodsList;
     }
 
-    @RequestMapping(value = "publishGoods.do")
+    @RequestMapping(value = "saveInfo.do")
     @ResponseBody
-    public Object publishGoods(GoodsDto goodsDto){
+    public Object saveInfo(GoodsDto goodsDto) throws IOException {
         Goods goods = goodsDto.getGoods();
-        String picture = goodsDto.getPicture().getOriginalFilename();
-        System.out.println(picture);
+        MultipartFile file = goodsDto.getPicture();
+        String filename = UUID.randomUUID() + ".jpg";
+
+//        System.out.println(filename);
         System.out.println(goods);
-        goods.setPicture(picture);
+        File filepath = new File("C:/GitHub/campus-transaction/WebContent/goods/" + filename);
+        file.transferTo(filepath);
+
+        goods.setPicture(filename);
 
         HashMap<String, Object> map = new HashMap<>();
-        if (goodsService.publishGoods(goods)){
+        if (goodsService.saveInfo(goods)){
+            map.put("success", 1);
+        } else {
+            map.put("success", 0);
+        }
+        return map;
+    }
+
+    @RequestMapping(value = "goodsPublish.do")
+    @ResponseBody
+    public Object goodsPublish(GoodsDto goodsDto) throws IOException {
+        Goods goods = goodsDto.getGoods();
+        MultipartFile file = goodsDto.getPicture();
+        String filename = UUID.randomUUID() + ".jpg";
+        Date now = new Date(System.currentTimeMillis());
+        System.out.println(now);
+//        System.out.println(filename);
+
+        goods.setPublish_time(now);
+        System.out.println(goods);
+        File filepath = new File("C:/GitHub/campus-transaction/WebContent/goods/" + filename);
+        file.transferTo(filepath);
+
+        goods.setPicture(filename);
+
+        System.out.println("goodsPublish.do" + goods);
+        HashMap<String, Object> map = new HashMap<>();
+        if (goodsService.goodsPublish(goods)){
             map.put("success", 1);
         } else {
             map.put("success", 0);

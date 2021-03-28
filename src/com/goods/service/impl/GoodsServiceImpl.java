@@ -61,7 +61,12 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public Boolean publishGoods(Goods goods) {
-        return goodsMapper.publishGoods(goods);
+    public Boolean saveInfo(Goods goods) {
+        return goodsMapper.saveInfo(goods);
+    }
+
+    @Override
+    public Boolean goodsPublish(Goods goods) {
+        return goodsMapper.goodsPublish(goods);
     }
 }

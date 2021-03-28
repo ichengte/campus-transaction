@@ -3,61 +3,87 @@ package com.goods.entity;
 import com.category.entity.Category;
 import com.user.entity.User;
 
+import java.sql.Date;
+
 /**
  * Author: TonyJam
  * Blog: https://www.tonyjam.cn/
  * Date: 2021/3/24 17:12
  */
 public class Goods {
-    private int gid;
+    private Integer gid;
     private String title;
-    private String publish_time;
+    private Date publish_time;
     private String content;
     private String picture;
     private String views;
     private String status;
     private float buy_price;
     private float sell_price;
-    private Category category = new Category();
-
-    public String getArea() {
-        return area;
-    }
-
-    public void setArea(String area) {
-        this.area = area;
-    }
-
     private User user = new User();
-    private int recommendation;
+    private Category category = new Category();
+    private Integer recommendation;
     private String area;
-
-    public Goods() {
-    }
-
-    public int getGid() {
-        return gid;
-    }
 
     @Override
     public String toString() {
         return "Goods{" +
                 "gid=" + gid +
                 ", title='" + title + '\'' +
-                ", publish_time='" + publish_time + '\'' +
+                ", publish_time=" + publish_time +
                 ", content='" + content + '\'' +
                 ", picture='" + picture + '\'' +
                 ", views='" + views + '\'' +
                 ", status='" + status + '\'' +
                 ", buy_price=" + buy_price +
                 ", sell_price=" + sell_price +
-                ", category=" + category +
                 ", user=" + user +
+                ", category=" + category +
                 ", recommendation=" + recommendation +
+                ", area='" + area + '\'' +
                 '}';
     }
 
-    public void setGid(int gid) {
+    public Goods(String title, Date publish_time, String content, String picture, String views, String status, float buy_price, float sell_price, User user, Category category, Integer recommendation, String area) {
+        this.title = title;
+        this.publish_time = publish_time;
+        this.content = content;
+        this.picture = picture;
+        this.views = views;
+        this.status = status;
+        this.buy_price = buy_price;
+        this.sell_price = sell_price;
+        this.user = user;
+        this.category = category;
+        this.recommendation = recommendation;
+        this.area = area;
+    }
+
+
+    public Goods(Integer gid, String title, Date publish_time, String content, String picture, String views, String status, float buy_price, float sell_price, User user, Category category, Integer recommendation, String area) {
+        this.gid = gid;
+        this.title = title;
+        this.publish_time = publish_time;
+        this.content = content;
+        this.picture = picture;
+        this.views = views;
+        this.status = status;
+        this.buy_price = buy_price;
+        this.sell_price = sell_price;
+        this.user = user;
+        this.category = category;
+        this.recommendation = recommendation;
+        this.area = area;
+    }
+
+    public Goods() {
+    }
+
+    public Integer getGid() {
+        return gid;
+    }
+
+    public void setGid(Integer gid) {
         this.gid = gid;
     }
 
@@ -69,11 +95,11 @@ public class Goods {
         this.title = title;
     }
 
-    public String getPublish_time() {
+    public Date getPublish_time() {
         return publish_time;
     }
 
-    public void setPublish_time(String publish_time) {
+    public void setPublish_time(Date publish_time) {
         this.publish_time = publish_time;
     }
 
@@ -125,14 +151,6 @@ public class Goods {
         this.sell_price = sell_price;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public User getUser() {
         return user;
     }
@@ -141,40 +159,27 @@ public class Goods {
         this.user = user;
     }
 
-    public int getRecommendation() {
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Integer getRecommendation() {
         return recommendation;
     }
 
-    public void setRecommendation(int recommendation) {
+    public void setRecommendation(Integer recommendation) {
         this.recommendation = recommendation;
     }
 
-    public Goods(int gid, String title, String publish_time, String content, String picture, String views, String status, float buy_price, float sell_price, Category category, User user, int recommendation) {
-        this.gid = gid;
-        this.title = title;
-        this.publish_time = publish_time;
-        this.content = content;
-        this.picture = picture;
-        this.views = views;
-        this.status = status;
-        this.buy_price = buy_price;
-        this.sell_price = sell_price;
-        this.category = category;
-        this.user = user;
-        this.recommendation = recommendation;
+    public String getArea() {
+        return area;
     }
 
-    public Goods(String title, String publish_time, String content, String picture, String views, String status, float buy_price, float sell_price, Category category, User user, int recommendation) {
-        this.title = title;
-        this.publish_time = publish_time;
-        this.content = content;
-        this.picture = picture;
-        this.views = views;
-        this.status = status;
-        this.buy_price = buy_price;
-        this.sell_price = sell_price;
-        this.category = category;
-        this.user = user;
-        this.recommendation = recommendation;
+    public void setArea(String area) {
+        this.area = area;
     }
 }
