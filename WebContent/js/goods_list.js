@@ -21,7 +21,7 @@ var keyword = getUrlParam('keyword');
 $(function () {
     // alert(keyword);
     if (keyword != null && keyword !== "" && keyword !== null) {
-        showSearchRes(keyword);
+        showSearchRes(keyword, rank);
     } else {
 		initGoods();
     }
@@ -30,7 +30,7 @@ $(function () {
 
 
 
-function showSearchRes(keyword) {
+function showSearchRes(keyword, rank) {
     $.ajax({
         type: "POST",
         url: "/goods/searchByKeyword.do",

@@ -61,8 +61,20 @@
                         }
                     })
                 } else {
-                    alert($('#goodsPublish').serialize());
-                    $('#goodsPublish').submit();
+                    // alert();
+                    // $('#goodsPublish').submit();
+                    $("#goodsPublish").ajaxSubmit({
+                        type:'POST',
+                        url:"/goods/goodsPublish.do",
+                        success:function (res) {
+                            if (res.success){
+                                alert("发布成功");
+                                location.href="/common/user_center.jsp"
+                            } else {
+                                alert("发布失败，请重新操作！");
+                            }
+                        }
+                    })
                 }
 
             });
@@ -178,7 +190,7 @@
         <img class="release-icon-main" src="${pageContext.request.contextPath}/images/release-icon.png" alt="">
         <div class="wave-fluid"></div>
         <div class="release-title">发布商品</div>
-        <form action="/goods/goodsPublish.do" id="goodsPublish" enctype="multipart/form-data" method="post">
+        <form action="" id="goodsPublish" enctype="multipart/form-data" method="post">
             <div class="form-wr">
                 <div class="form-must-wr">
                     <input id="pid" type="hidden" name="goods.gid" value="">

@@ -100,7 +100,7 @@ function initUserGoods(username){
 					str1+
 					str+
 	                '<a href="goods_publish.jsp?edit=1&gid='+res[i].gid+'" target="_top"><span class="enshrine_it  make_edition">编辑</span></a> '+
-	                '</div></div><a href="goods_detail.jsp?pid='+res[i].pid+'">'+
+	                '</div></div><a href="goods_detail.jsp?gid='+res[i].gid+'">'+
 	                '<img class="enshr_ph" src="/goods/'+res[i].picture+'" alt="'+res[i].title+'"></a></div>');
 			$("#onsale_pro").append(mypro1);
 		}

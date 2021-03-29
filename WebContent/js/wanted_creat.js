@@ -10,7 +10,6 @@ $(function () {
     if (wid){
         initWantedToEdit();
     }
-    deleteWanted();
 });
 
 function initWantedToEdit() {

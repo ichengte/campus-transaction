@@ -46,11 +46,11 @@ function initProductWithUserInfo(){
 					'<li class="ershou-seller"> <div class="name"><span>卖家</span></div> '+
                     ' <div class="value"><span class="value-name" id="userid">'+res.user.realname+'</span></div>' +
                     '</li>'		
-			)
+			);
 			
 			$("div[class='ershou-desc']").append(
 					'<div class="desc clearfix"><a href="#" target="_top"> '+
-					'<img id="user_ph"src="/goods/'+res.picture+'"></a><p id="user_cmt">'+res.content+'</p></div>'
+					'<img id="user_ph"src="/user/'+res.user.profile+'"></a><p id="user_cmt">'+res.content+'</p></div>'
 			
 			)
 			

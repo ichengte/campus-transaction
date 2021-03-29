@@ -37,6 +37,9 @@ public class GoodsController {
 
         goodsList = goodsService.findAll(rank);
 //        System.out.println(goodsList);
+        for (Goods g : goodsList) {
+            System.out.println(g.getPublish_time());
+        }
         session.setAttribute("goodsList", goodsList);
         return goodsList;
     }

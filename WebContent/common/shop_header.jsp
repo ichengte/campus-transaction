@@ -13,6 +13,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Insert title here</title>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/cookie.js"></script>
     <style type="text/css">
         .loginandrigist {
             margin-left: 1000px;

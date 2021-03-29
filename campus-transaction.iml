@@ -485,5 +485,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="jquery.fancybox" level="application" />
+    <orderEntry type="library" name="jquery.form" level="application" />
   </component>
 </module>

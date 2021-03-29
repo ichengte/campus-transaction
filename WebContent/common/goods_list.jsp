@@ -26,7 +26,15 @@
     <script src="${pageContext.request.contextPath}/js/common.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/common_001.js" type="text/javascript"></script>
     <link rel="icon" href="#" type="image/x-icon">
-
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var index = <%=session.getAttribute("index")%>;
+            if (index == null || index === "" || index === undefined){
+                index = 1;
+            }
+            $('.page-num').eq(index - 1).addClass("cur");
+        });
+    </script>
 
 </head>
 

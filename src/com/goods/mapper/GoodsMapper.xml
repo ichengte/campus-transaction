@@ -34,13 +34,14 @@
             <result column="academy" property="academy"/>
             <result column="grade" property="grade"/>
             <result column="credit" property="credit"/>
+            <result column="profile" property="profile"/>
         </association>
     </resultMap>
 
     <!-- findAll -->
     <select id="findAll" resultMap="goodsResult">
         select g.*, u.uuid, u.realname, c.cid, c.name from tony_user u, tony_goods g, tony_category c
-        where g.cid = c.cid and g.uuid = u.uuid and g.status = 1 order by #{0} desc
+        where g.cid = c.cid and g.uuid = u.uuid and g.status = 1 order by #{rank} desc
     </select>
 
     <!-- findById -->

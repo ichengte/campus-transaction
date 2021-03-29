@@ -10,11 +10,8 @@
     <link media="all" href="${pageContext.request.contextPath}/css/goods_detail.css" type="text/css" rel="stylesheet">
     <link media="all" href="${pageContext.request.contextPath}/css/index.css" type="text/css" rel="stylesheet">
 
-    <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/jquery.mousewheel-3.0.2.pack.js" type="text/javascript"></script>
-<%--    <script src="${pageContext.request.contextPath}/js/jquery.fancybox-1.3.1.js" type="text/javascript"></script>--%>
-    <link href="https://cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.css" rel="stylesheet">
-    <script src="https://cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/common.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/hm.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/detail.js" type="text/javascript"></script>

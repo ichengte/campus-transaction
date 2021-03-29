@@ -8,20 +8,20 @@ function getUrlParam(name) {
         }
 var gid = getUrlParam('gid');
 
-$(function(){
-	if(!gid){
-		initGoodsToEdit();
-	}
-});
-
-function initGoodsToEdit(){
-	$.ajax({
-		type:"POST",
-		url:"productServlet",
-		dataType:"json",
-		data:{"gid":gid},
-		success:function(res){
-
-		}
-	})
-}
+// $(function(){
+// 	if(!gid){
+// 		initGoodsToEdit();
+// 	}
+// });
+//
+// function initGoodsToEdit(){
+// 	$.ajaxSubmit({
+// 		type:"POST",
+// 		url:"productServlet",
+// 		dataType:"json",
+// 		data:{"gid":gid},
+// 		success:function(res){
+//
+// 		}
+// 	})
+// }

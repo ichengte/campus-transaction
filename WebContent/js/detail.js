@@ -115,15 +115,15 @@ function report()
 }
 var index = 0,isLogin=false;
 $(document).ready(function(){
-    $("a[rel=img_group]").fancybox({
-        'transitionIn'      : 'fade',
-        'transitionOut'     : 'fade',
-        'cyclic': true,
-        'titlePosition': 'over',
-        'titleFormat'  : function(title, currentArray, currentIndex, currentOpts) {
-            return '<span id="fancybox-title-over"> ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
-        }
-    });
+    // $("a[rel=img_group]").fancybox({
+    //     'transitionIn'      : 'fade',
+    //     'transitionOut'     : 'fade',
+    //     'cyclic': true,
+    //     'titlePosition': 'over',
+    //     'titleFormat'  : function(title, currentArray, currentIndex, currentOpts) {
+    //         return '<span id="fancybox-title-over"> ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+    //     }
+    // });
     if($("#want-list").size()==1){
         if(zb_cookie.getCookie("user_id")){
             isLogin=true;

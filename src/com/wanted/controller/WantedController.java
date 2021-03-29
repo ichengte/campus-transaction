@@ -54,7 +54,8 @@ public class WantedController {
         return wantedList;
     }
 
-
+    @RequestMapping(value = "/findById.do")
+    @ResponseBody
     public Wanted findById(Integer wid){
         Wanted wanted = wantedService.findById(wid);
         System.out.println(wanted);
