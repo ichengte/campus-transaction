@@ -6,22 +6,13 @@ function getUrlParam(name) {
 }
 
 var category = getUrlParam('category');
-
-var rank1 = getUrlParam('rank1');
-
+var rank = getUrlParam('rank');
 var keyword = getUrlParam('keyword');
-
-
-
-//alert('当前页面url参数:'+window.location)
-
-//var url ="productListServlet?cat="+urlValCat+"&searchKey=a";
-//var url ="productListServlet?cat="+urlValCat;
 
 $(function () {
     // alert(keyword);
     if (keyword != null && keyword !== "" && keyword !== null) {
-        showSearchRes(keyword, rank1);
+        showSearchRes(keyword, rank);
     } else {
 		initGoods();
     }
@@ -30,21 +21,21 @@ $(function () {
 
 
 
-function showSearchRes(keyword, rank1) {
+function showSearchRes(keyword, rank) {
     $.ajax({
         type: "POST",
         url: "/goods/searchByKeyword.do",
         dataType: "json",
-        data: {"keyword": keyword, "rank1": rank1},
+        data: {"keyword": keyword, "rank": rank},
         success: function (res) {
             if (res.length == 0) {
                 alert("没有查到您要的商品，建议到【全部商品】浏览。")
             } else {
                 // alert(res[0].category.name)
-                $('.rank-title').eq(0).attr("href", "/common/goods_list.jsp?rank1=publish_time&keyword=" + keyword);
-                $('.rank-title').eq(1).attr("href", "/common/goods_list.jsp?rank1=credit&keyword=" + keyword);
-                $('.rank-title').eq(2).attr("href", "/common/goods_list.jsp?rank1=sell_price&keyword=" + keyword);
-                $('.rank-title').eq(3).attr("href", "/common/goods_list.jsp?rank1=recommendation&keyword=" + keyword);
+                $('.rank-title').eq(0).attr("href", "/common/goods_list.jsp?rank=publish_time&keyword=" + keyword);
+                $('.rank-title').eq(1).attr("href", "/common/goods_list.jsp?rank=credit&keyword=" + keyword);
+                $('.rank-title').eq(2).attr("href", "/common/goods_list.jsp?rank=sell_price&keyword=" + keyword);
+                $('.rank-title').eq(3).attr("href", "/common/goods_list.jsp?rank=recommendation&keyword=" + keyword);
                 var len = Math.min(res.length, 8);
                 for (var i = 0; i < len; i++) {
 
@@ -82,7 +73,7 @@ function initGoods(){
 		type:"POST",
 		url:url,
 		dataType:"json",
-		data:{"rank1": rank1, "category": category, "keyword": keyword},
+		data:{"rank": rank, "category": category, "keyword": keyword},
 		success: function (res) {
 			if (res.length == 0) {
 				alert("没有查到您要的商品，建议到【全部商品】浏览。")

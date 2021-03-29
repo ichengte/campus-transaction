@@ -29,26 +29,26 @@ public class GoodsController {
 
     @RequestMapping(value = "/findAll.do")
     @ResponseBody
-    public Object findAll(HttpSession session, String rank1){
+    public Object findAll(HttpSession session, String rank){
         List<Goods> goodsList;
-        Integer rank = 3;
-        switch (rank1) {
+        Integer rank_idx = 3;
+        switch (rank) {
             case "credit":
-                rank = 24;
+                rank_idx = 24;
                 break;
             case "recommendation":
-                rank = 12;
+                rank_idx = 12;
                 break;
             case "sell_price":
-                rank = 6;
+                rank_idx = 6;
                 break;
         }
-        System.out.println(rank);
-        goodsList = goodsService.findAll(rank);
+        System.out.println(rank_idx);
+        goodsList = goodsService.findAll(rank_idx);
 //        System.out.println(goodsList);
-        for (Goods g : goodsList) {
-            System.out.println(g.getPublish_time());
-        }
+//        for (Goods g : goodsList) {
+//            System.out.println(g.getPublish_time());
+//        }
         session.setAttribute("index", 1);
         session.setAttribute("goodsList", goodsList);
         return goodsList;

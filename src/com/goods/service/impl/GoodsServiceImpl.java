@@ -24,8 +24,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public List<Goods> findAll(Integer rank) {
-        Map<String,Object> map=new HashMap<String,Object>();
-        System.out.println("rank="+rank);
+        HashMap<String, Object> map = new HashMap<>();
         map.put("rank", rank);
         return goodsMapper.findAll(map);
     }

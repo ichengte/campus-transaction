@@ -42,7 +42,7 @@
     </resultMap>
 
     <!-- findAll -->
-    <select id="findAll" resultMap="goodsResult" parameterType="map">
+    <select id="findAll" resultMap="goodsResult">
         select g.*, u.*, c.* from tony_user u, tony_goods g, tony_category c
         where g.cid = c.cid and g.uuid = u.uuid and g.status = 1 order by ${rank} desc
     </select>

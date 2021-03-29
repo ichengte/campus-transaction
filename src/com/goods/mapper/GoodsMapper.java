@@ -13,7 +13,7 @@ import java.util.Map;
  * Date: 2021/3/24 17:12
  */
 public interface GoodsMapper {
-    List<Goods> findAll(Map<String,Object> map);
+    List<Goods> findAll(Map<String, Object> map);
     Goods findById(Integer gid);
     List<Goods> findByPage(Integer index);
     List<Goods> findUserGoods(String username);
