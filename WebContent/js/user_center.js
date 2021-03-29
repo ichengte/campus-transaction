@@ -1,14 +1,15 @@
-// function getUrlParam(name) {
-//             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-//             var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-//             if (r != null) return unescape(r[2]);
-//             return null; //返回参数值
-//         }
-// var username = getUrlParam('username');
+function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]);
+            return null; //返回参数值
+        }
+var username = getUrlParam('username');
 
 $(document).ready(function(){
 	initUserInfo(username);
 	initUserGoods(username);
+	initWantList(username);
 });
 
 function initUserInfo(username){
@@ -175,4 +176,48 @@ function refresh(gid){
 				alert("对不起，擦亮失败，请重试")
 			}
 		});
+}
+
+function initWantList() {
+	$.ajax({
+		type: "POST",
+		url: "/wanted/findByUsername.do",
+		DataType:'json',
+		data:{"username":username},
+		success: function (res) {
+			for (var i = 0; i < res.length; i++) {
+				var str1 = '<li class="want-item"><div class="want-li clearfix"> ' +
+					'<div class="right"><h4 class="want-name">[求购]<span>' + res[i].title + '</span></h4><p class="want-detail">' + res[i].content + '</p> ' +
+					'<p class="want-attr"><span>期望价格</span><span class="want-price">¥' + res[i].price + '</span><span>期望交易地点：</span> ' +
+					'<span class="want-add">' + res[i].area + '</span><span>' + res[i].createtime + '</span></p><p class="want-contact"> ' +
+					'<p class="want-person">' + res[i].user.realname + '</p> ' +
+					'<span class="mr10">TEL：' + res[i].user.phone + '</span><span>QQ：' + res[i].user.qq + '</span></p> ' +
+					'<a href="/common/wanted_creat.jsp?wid='+res[i].wid+'" target="_top"><span class="enshrine_it  make_edition">编辑</span></a> '+
+					'<span class="enshrine_it  make_edition" onclick=' + 'deleteWanted(' + res[i].wid + ')>删除</span> '+
+					'</div></div></li>';
+
+				$(".my-want-list").append(str1);
+			}
+		}
+	});
+}
+
+function deleteWanted(wid) {
+	if (!confirm("真的要删除吗？")){
+		return;
+	}
+	$.ajax({
+		url:"/wanted/delete.do",
+		dataType:"json",
+		type:"POST",
+		data:{"wid": wid},
+		success:function (res) {
+			if (!res.success){
+				alert("删除失败，请重新操作");
+			} else {
+				alert("删除成功");
+				location.reload();
+			}
+		}
+	})
 }

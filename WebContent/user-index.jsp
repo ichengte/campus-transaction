@@ -7,6 +7,12 @@
   ~ Date: 2021/3/23 下午6:29
   ~ Author: TonyJam
   --%>
+<script type="text/javascript">
+    window.text = function(){
+        var cur_username = ${sessionScope.user.username};
+    }
+
+</script>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

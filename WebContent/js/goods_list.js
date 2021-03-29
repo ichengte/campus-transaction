@@ -52,7 +52,7 @@ function showSearchRes(keyword) {
                         + ' <div class="info">'
                         + ' <div class="price">' + res[i].sell_price + '</div>'
                         + ' <div class="name">'
-                        + ' <a style="padding-left: 47px;" href="product_detail.jsp?gid=' + res[i].gid + '" target="_top">' + res[i].title + '</a>'
+                        + ' <a style="padding-left: 47px;" href="/common/goods_detail.jsp?gid=' + res[i].gid + '" target="_top">' + res[i].title + '</a>'
                         + ' </div>'
                         + ' <div class="department" style="text-align: left"><span>原价：￥' + res[i].buy_price + '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>现价：￥' + res[i].sell_price + '</span></div>'
                         + ' <div class="place"><span>上架时间：' + res[i].publish_time + '</span></div>';
@@ -94,11 +94,11 @@ function initGoods(){
 				var len = Math.min(res.length, 8);
 				for (var i = 0; i < len; i++) {
                     // alert(res[i].sell_price)
-					var str = '<li class="item"><a href="common/goods_detail.jsp?gid=' + res[i].gid + '" class="img" target="_top"><img id="pro_img" src="' + '/goods/' + res[i].picture + '" alt="' + res[i].title + '"></a>'
+					var str = '<li class="item"><a href="/common/goods_detail.jsp?gid=' + res[i].gid + '" class="img" target="_top"><img id="pro_img" src="' + '/goods/' + res[i].picture + '" alt="' + res[i].title + '"></a>'
 						+ ' <div class="info">'
 						+ ' <div class="price">' + res[i].sell_price + '</div>'
 						+ ' <div class="name">'
-						+ ' <a style="padding-left: 47px;" href="product_detail.jsp?gid=' + res[i].gid + '" target="_top">' + res[i].title + '</a>'
+						+ ' <a style="padding-left: 47px;" href="/common/goods_detail.jsp?gid=' + res[i].gid + '" target="_top">' + res[i].title + '</a>'
 						+ ' </div>'
 						+ ' <div class="department" style="text-align: left"><span>原价：￥' + res[i].buy_price + '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>现价：￥' + res[i].sell_price + '</span></div>'
 						+ ' <div class="place"><span>上架时间：' + res[i].publish_time + '</span></div>';

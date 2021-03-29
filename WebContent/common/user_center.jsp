@@ -22,8 +22,9 @@
     <script src="${pageContext.request.contextPath}/js/add.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/hm.js" type="text/javascript"></script>
     <%-- <script src="${pageContext.request.contextPath}/js/common.js"></script> --%>
-<%--    <script src="${pageContext.request.contextPath}/js/common_001.js" type="text/javascript"></script>--%>
+    <%--    <script src="${pageContext.request.contextPath}/js/common_001.js" type="text/javascript"></script>--%>
     <script src="${pageContext.request.contextPath}/js/user_center.js" type="text/javascript"></script>
+    <link media="all" href="${pageContext.request.contextPath}/css/wanted_list.css" type="text/css" rel="stylesheet">
 
 
 </head>
@@ -39,6 +40,7 @@
                 <a href="#">'+userId+'</a>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -101,58 +103,58 @@
             </div>
         </div>
         <div id="my_info">
-<%--            <div id="account_info">--%>
-<%--                <h2>账户信息</h2>--%>
-<%--                <ul class="infos">--%>
-<%--                    <li>账号</li>--%>
-<%--                    <li class="right_info">201322146108</li>--%>
-<%--                </ul>--%>
-<%--            </div>--%>
-<%--            <div id="base_info">--%>
-<%--                <h2>基本信息 <span id="edit_info">编辑</span><span id="save_info">保存</span></h2>--%>
-<%--                <ul class="infos">--%>
-<%--                    <li>昵称</li>--%>
-<%--                    <li class="right_info">--%>
-<%--                        <span id="nickname_span">sky123</span>--%>
-<%--                        <input value="" id="nickname" type="text">--%>
-<%--                    </li>--%>
-<%--                </ul>--%>
-<%--                <ul class="infos">--%>
-<%--                    <li>手机</li>--%>
-<%--                    <li class="right_info">--%>
-<%--                        <span id="phone_span">18607159682</span>--%>
-<%--                        <input value="" id="phone" type="text">--%>
-<%--                    </li>--%>
-<%--                </ul>--%>
-<%--                <ul class="infos">--%>
-<%--                    <li>QQ</li>--%>
-<%--                    <li class="right_info">--%>
-<%--                        <span id="qq_span">98798432134</span>--%>
-<%--                        <input value="" id="qq" type="text">--%>
-<%--                    </li>--%>
-<%--                </ul>--%>
-<%--                <ul class="infos">--%>
-<%--                    <li>学院</li>--%>
-<%--                    <li class="right_info">--%>
-<%--                        <span id="college_span">信息学院</span>--%>
-<%--                        <input value="" id="college" type="text">--%>
-<%--                    </li>--%>
-<%--                </ul>--%>
-<%--                <ul class="infos">--%>
-<%--                    <li>年级</li>--%>
-<%--                    <li class="right_info">--%>
-<%--                        <span id="grade_span">2013级</span>--%>
-<%--                        <input value="" id="grade" type="text">--%>
-<%--                    </li>--%>
-<%--                </ul>--%>
-<%--                <ul class="infos">--%>
-<%--                    <li>校区</li>--%>
-<%--                    <li class="right_info">--%>
-<%--                        <span id="area_span">2013级</span>--%>
-<%--                        <input value="" id="area" type="text">--%>
-<%--                    </li>--%>
-<%--                </ul>--%>
-<%--            </div>--%>
+            <%--            <div id="account_info">--%>
+            <%--                <h2>账户信息</h2>--%>
+            <%--                <ul class="infos">--%>
+            <%--                    <li>账号</li>--%>
+            <%--                    <li class="right_info">201322146108</li>--%>
+            <%--                </ul>--%>
+            <%--            </div>--%>
+            <%--            <div id="base_info">--%>
+            <%--                <h2>基本信息 <span id="edit_info">编辑</span><span id="save_info">保存</span></h2>--%>
+            <%--                <ul class="infos">--%>
+            <%--                    <li>昵称</li>--%>
+            <%--                    <li class="right_info">--%>
+            <%--                        <span id="nickname_span">sky123</span>--%>
+            <%--                        <input value="" id="nickname" type="text">--%>
+            <%--                    </li>--%>
+            <%--                </ul>--%>
+            <%--                <ul class="infos">--%>
+            <%--                    <li>手机</li>--%>
+            <%--                    <li class="right_info">--%>
+            <%--                        <span id="phone_span">18607159682</span>--%>
+            <%--                        <input value="" id="phone" type="text">--%>
+            <%--                    </li>--%>
+            <%--                </ul>--%>
+            <%--                <ul class="infos">--%>
+            <%--                    <li>QQ</li>--%>
+            <%--                    <li class="right_info">--%>
+            <%--                        <span id="qq_span">98798432134</span>--%>
+            <%--                        <input value="" id="qq" type="text">--%>
+            <%--                    </li>--%>
+            <%--                </ul>--%>
+            <%--                <ul class="infos">--%>
+            <%--                    <li>学院</li>--%>
+            <%--                    <li class="right_info">--%>
+            <%--                        <span id="college_span">信息学院</span>--%>
+            <%--                        <input value="" id="college" type="text">--%>
+            <%--                    </li>--%>
+            <%--                </ul>--%>
+            <%--                <ul class="infos">--%>
+            <%--                    <li>年级</li>--%>
+            <%--                    <li class="right_info">--%>
+            <%--                        <span id="grade_span">2013级</span>--%>
+            <%--                        <input value="" id="grade" type="text">--%>
+            <%--                    </li>--%>
+            <%--                </ul>--%>
+            <%--                <ul class="infos">--%>
+            <%--                    <li>校区</li>--%>
+            <%--                    <li class="right_info">--%>
+            <%--                        <span id="area_span">2013级</span>--%>
+            <%--                        <input value="" id="area" type="text">--%>
+            <%--                    </li>--%>
+            <%--                </ul>--%>
+            <%--            </div>--%>
         </div>
         <ul id="middle_nav1" class="clearfix middle_nav">
 
@@ -162,26 +164,36 @@
 
         <div id="my_products">
             <div id="onsale_pro">
-<%--                <div class="enshr_each" id="">--%>
-<%--                    <div class="enshr_info">--%>
-<%--                        <h2><a href="http://hust.2shoujie.com/goods/186267" title="坚果pro">坚果pro最新</a></h2>--%>
-<%--                        <p>最新上市，工匠设计，美得不像实力派。</p>--%>
-<%--                        <div class="enshr_state">--%>
-<%--                            <span id="prostate">状态：正在出售</span>--%>
-<%--                            &nbsp;&nbsp;<span id="prostate1">上架日期：</span>--%>
-<%--                            <span class="enshrine_it" onclick="sellout(5);">确认售出</span>--%>
-<%--                            <span class="enshrine_it make_edition" onclick="offshelf(68);">下架</span>--%>
-<%--                            <span class="enshrine_it make_edition" onclick="refresh(124);">擦亮</span>--%>
-<%--                            <a href="#" target="_top">--%>
-<%--                                <span class="enshrine_it  make_edition">编辑</span>--%>
-<%--                            </a>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <a href="#">--%>
-<%--                        <img class="enshr_ph" src="#" alt="">--%>
-<%--                    </a>--%>
-<%--                </div>--%>
+                <%--                <div class="enshr_each" id="">--%>
+                <%--                    <div class="enshr_info">--%>
+                <%--                        <h2><a href="http://hust.2shoujie.com/goods/186267" title="坚果pro">坚果pro最新</a></h2>--%>
+                <%--                        <p>最新上市，工匠设计，美得不像实力派。</p>--%>
+                <%--                        <div class="enshr_state">--%>
+                <%--                            <span id="prostate">状态：正在出售</span>--%>
+                <%--                            &nbsp;&nbsp;<span id="prostate1">上架日期：</span>--%>
+                <%--                            <span class="enshrine_it" onclick="sellout(5);">确认售出</span>--%>
+                <%--                            <span class="enshrine_it make_edition" onclick="offshelf(68);">下架</span>--%>
+                <%--                            <span class="enshrine_it make_edition" onclick="refresh(124);">擦亮</span>--%>
+                <%--                            <a href="#" target="_top">--%>
+                <%--                                <span class="enshrine_it  make_edition">编辑</span>--%>
+                <%--                            </a>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                    <a href="#">--%>
+                <%--                        <img class="enshr_ph" src="#" alt="">--%>
+                <%--                    </a>--%>
+                <%--                </div>--%>
             </div>
+        </div>
+        <ul id="middle_nav1" class="clearfix middle_nav">
+
+            <li class="on"><a href="#">我求购的商品</a></li>
+
+        </ul>
+
+        <div class="wrap-want-list">
+            <ul class="want-list my-want-list" id="want-list">
+            </ul>
         </div>
 
 

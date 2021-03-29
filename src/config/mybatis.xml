@@ -13,5 +13,6 @@
           <mapper resource="com/user/mapper/UserMapper.xml"/>
           <mapper resource="com/goods/mapper/GoodsMapper.xml"/>
           <mapper resource="com/category/mapper/CategoryMapper.xml" />
+          <mapper resource="com/wanted/mapper/WantedMapper.xml"/>
      </mappers>
 </configuration>

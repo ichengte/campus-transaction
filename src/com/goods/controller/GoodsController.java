@@ -36,7 +36,7 @@ public class GoodsController {
         }
 
         goodsList = goodsService.findAll(rank);
-        System.out.println(goodsList);
+//        System.out.println(goodsList);
         session.setAttribute("goodsList", goodsList);
         return goodsList;
     }

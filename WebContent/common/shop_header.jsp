@@ -57,9 +57,9 @@
             <div class="search-hots center ease2">
                 <span>热门：</span>
                 <a class="hots" href="goods_list.jsp?category=101" target="_top">手机</a>
-                <a class="hots" href="goods_list.jsp?category=101" target="_top">笔记本</a>
-                <a class="hots" href="goods_list.jsp?category=101" target="_top">乐器</a>
-                <a class="hots" href="goods_list.jsp?category=101" target="_top">图书</a>
+                <a class="hots" href="goods_list.jsp?category=201" target="_top">笔记本</a>
+                <a class="hots" href="goods_list.jsp?category=701" target="_top">乐器</a>
+                <a class="hots" href="goods_list.jsp?category=8" target="_top">图书</a>
             </div>
         </div>
         <%-- <input   type="text" value="${sessionScope.user.id}"> --%>

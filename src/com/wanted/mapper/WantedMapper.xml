@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Project: campus-transaction
+  ~ File: UserMapper.xml
+  ~ Date: 2021/3/23 下午6:29
+  ~ Author: TonyJam
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.wanted.mapper.WantedMapper">
+
+    <resultMap id="wantedResult" type="com.wanted.entity.Wanted">
+        <id property="wid" column="wid"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="area" property="area"/>
+        <result column="price" property="price"/>
+        <result column="createtime" property="createtime"/>
+        <association property="user" javaType="com.user.entity.User">
+            <id column="uuid" property="uuid"/>
+            <result column="realname" property="realname"/>
+            <result column="credit" property="credit"/>
+            <result column="phone" property="phone"/>
+            <result column="qq" property="qq"/>
+            <result column="academy" property="academy"/>
+            <result column="grade" property="grade"/>
+            <result column="credit" property="credit"/>
+            <result column="profile" property="profile"/>
+        </association>
+    </resultMap>
+
+    <insert id="createWanted" parameterType="com.wanted.entity.Wanted">
+        insert into tony_wanted(title,content,area,price,uuid,createtime) values(#{title},#{content},#{area},#{price},#{user.uuid},#{createtime})
+    </insert>
+
+    <select id="findAll" resultMap="wantedResult">
+        select w.*, u.* from tony_wanted w, tony_user u where u.uuid=w.uuid
+    </select>
+
+    <select id="findByUsername" resultMap="wantedResult">
+        select w.*, u.* from tony_wanted w, tony_user u where u.uuid=w.uuid and u.username=#{username}
+    </select>
+
+    <select id="findById" resultType="com.wanted.entity.Wanted">
+        select * from tony_wanted where wid=#{wid}
+    </select>
+
+    <delete id="delete">
+        delete from tony_wanted where wid=#{wid}
+    </delete>
+</mapper>

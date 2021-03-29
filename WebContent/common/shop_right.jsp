@@ -28,17 +28,18 @@
 <aside>
 
     <div id="release-button1">
-        <a href="want_list_creat.jsp" style="color: white" id="want-buy"
-           onclick="return ${session.user.username} "> 我要买</a>
+        <a href="${pageContext.request.contextPath}/common/wanted_creat.jsp?username=${sessionScope.user.username}" style="color: white" id="want-buy"
+           onclick=""> 我想要</a>
         <!-- <a  href="#" style="color: white" id="want-buy"> 我要买</a> -->
     </div>
     <br><br>
     <div id="release-button2">
-        <a href="${pageContext.request.contextPath}/common/goods_publish.jsp?edit=0" style="color: white" id="want-sale"> 我要卖</a>
+        <a href="${pageContext.request.contextPath}/common/goods_publish.jsp?edit=0" style="color: white"
+           id="want-sale"> 我要卖</a>
     </div>
     <br><br>
     <div id="release-button3">
-        <a href="want_list.jsp" style="color: white"> 求购专区</a>
+        <a href="${pageContext.request.contextPath}/common/wanted_list.jsp" style="color: white"> 求购专区</a>
     </div>
 
     <div class="helped ">
@@ -48,12 +49,12 @@
     <div class="fl-wrapper clearfix">
         <div class="wx-follow">
             <a href="javascript:void(0);" class="fl-icon">
-                <img src="../images/weixin-fl.png">
+                <img src="${pageContext.request.contextPath}/images/weixin-fl.png">
             </a>
             <div class="wx-fl-qrcode">
                 <p>微信关注</p>
-                <img height="100px" height="100px" src="../images/wx-fl-qrcode.png">
-                <p>武科大步行街</p>
+                <img height="100px" height="100px" src="${pageContext.request.contextPath}/images/wx-fl-qrcode.png">
+                <p>南大校园二手街</p>
                 <div class="dc-dot"></div>
             </div>
         </div>
@@ -63,8 +64,8 @@
 </body>
 <script type="text/javascript">
     $(document).ready(function () {
-        $.post("order", function (resp) {
-            $("#ordercount").html('' + resp + '');
+        $.post("order", function (res) {
+            $("#ordercount").html('' + res + '');
         })
     })
 

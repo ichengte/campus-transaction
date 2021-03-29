@@ -49,7 +49,7 @@ function initProductWithUserInfo(){
 			)
 			
 			$("div[class='ershou-desc']").append(
-					'<div class="desc clearfix"><a href="http://hust.2shoujie.com/profile/107281" target="_top"> '+
+					'<div class="desc clearfix"><a href="#" target="_top"> '+
 					'<img id="user_ph"src="/goods/'+res.picture+'"></a><p id="user_cmt">'+res.content+'</p></div>'
 			
 			)
