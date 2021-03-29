@@ -29,17 +29,27 @@ public class GoodsController {
 
     @RequestMapping(value = "/findAll.do")
     @ResponseBody
-    public Object findAll(HttpSession session, String rank){
+    public Object findAll(HttpSession session, String rank1){
         List<Goods> goodsList;
-        if (rank == null || rank.equals("null")){
-            rank = "publish_time";
+        Integer rank = 3;
+        switch (rank1) {
+            case "credit":
+                rank = 24;
+                break;
+            case "recommendation":
+                rank = 12;
+                break;
+            case "sell_price":
+                rank = 6;
+                break;
         }
-
+        System.out.println(rank);
         goodsList = goodsService.findAll(rank);
 //        System.out.println(goodsList);
         for (Goods g : goodsList) {
             System.out.println(g.getPublish_time());
         }
+        session.setAttribute("index", 1);
         session.setAttribute("goodsList", goodsList);
         return goodsList;
     }
@@ -60,11 +70,11 @@ public class GoodsController {
         List<Goods> goodsList = goodsService.findByPage(index);
         session.setAttribute("goodsList", goodsList);
         session.setAttribute("index", index);
-//        System.out.println(goodsList.size());
+        System.out.println(goodsList.size());
         return "user-index";
     }
 
-    @RequestMapping(value = "findUserGoods.do")
+    @RequestMapping(value = "/findUserGoods.do")
     @ResponseBody
     public List<Goods> findUserGoods(String username){
 //        System.out.println(username);

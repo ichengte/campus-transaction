@@ -7,7 +7,9 @@ import com.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Author: TonyJam
@@ -21,8 +23,11 @@ public class GoodsServiceImpl implements GoodsService {
     GoodsMapper goodsMapper;
 
     @Override
-    public List<Goods> findAll(String rank) {
-        return goodsMapper.findAll(rank);
+    public List<Goods> findAll(Integer rank) {
+        Map<String,Object> map=new HashMap<String,Object>();
+        System.out.println("rank="+rank);
+        map.put("rank", rank);
+        return goodsMapper.findAll(map);
     }
 
     @Override

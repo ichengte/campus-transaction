@@ -12,7 +12,7 @@ import java.util.List;
  * Date: 2021/3/24 17:12
  */
 public interface GoodsService {
-    List<Goods> findAll(String rank);
+    List<Goods> findAll(Integer rank);
     Goods findById(Integer gid);
     List<Goods> findByPage(Integer index);
     List<Goods> findUserGoods(String username);

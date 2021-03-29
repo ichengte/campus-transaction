@@ -1,18 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" import="java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%--<% if (session.getAttribute("goodsResult") == null ) {%>--%>
+<%--    <jsp:forward page="/goods/findByPage.do?index=1" />--%>
+<%--<%}%>--%>
+
 <%--
   ~ Project: campus-transaction
   ~ File: user-index.jsp
   ~ Date: 2021/3/23 下午6:29
   ~ Author: TonyJam
   --%>
-<script type="text/javascript">
-    window.text = function(){
-        var cur_username = ${sessionScope.user.username};
-    }
-
-</script>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -30,10 +28,7 @@
     <link href="css/bootstrap.min.css">
     <script type="text/javascript">
         $(document).ready(function () {
-            var index = <%=session.getAttribute("index")%>;
-            if (index == null || index === "" || index === undefined){
-                index = 1;
-            }
+            var index = ${sessionScope.index};
             $('.page-num').eq(index - 1).addClass("cur");
         });
     </script>
@@ -59,24 +54,31 @@
             <ul class="items clearfix">
                 <c:forEach items="${goodsList}" var="g">
                     <li class="item">
-                        <a style="padding-left: 47px;" href="${pageContext.request.contextPath}/common/goods_detail.jsp?gid=' + ${g.gid} + '" target="_top"><img id="pro_img" src="/goods/${g.picture }" alt="${g.title }"></a>
+                        <a style="padding-left: 47px;"
+                           href="${pageContext.request.contextPath}/common/goods_detail.jsp?gid=' + ${g.gid} + '"
+                           target="_top"><img id="pro_img" src="/goods/${g.picture }" alt="${g.title }"></a>
                         <div class="info">
                             <div class="price">"${g.sell_price }"</div>
                             <div class="name">
-                                <a style="padding-left: 47px;" href="${pageContext.request.contextPath}/common/goods_detail.jsp?gid=' + ${g.gid} + '" target="_top">${g.title }</a>
+                                <a style="padding-left: 47px;"
+                                   href="${pageContext.request.contextPath}/common/goods_detail.jsp?gid=' + ${g.gid} + '"
+                                   target="_top">${g.title }</a>
                             </div>
 
-                            <div class="department" style="text-align: left"><span>原价：￥${g.buy_price}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>现价：￥${sell_price}</span></div>
-                            <div class="place"><span>上架时间：${g.publish_time} </span></div>;
-                            <c:choose>
-                                <c:when test="${g.recommendation==1}">
-                                    <div class="school0"><span>推荐</span></div>
-                                </c:when>
+                            <div class="department" style="text-align: left"><span>原价：￥${g.buy_price}</span>
+                                <div class="place"><span>上架时间：${g.publish_time} </span></div>
+                                ;
+                                <c:choose>
+                                    <c:when test="${g.recommendation==1}">
+                                        <div class="school0"><span>推荐</span></div>
+                                    </c:when>
 
-                                <c:otherwise>
-                                    <div class="school"><span>新品</span></div>
-                                </c:otherwise>
-                            </c:choose>
+                                    <c:otherwise>
+                                        <div class="school"><span>新品</span></div>
+                                    </c:otherwise>
+                                </c:choose>
+
+                            </div>
                         </div>
                     </li>
                 </c:forEach>
@@ -87,7 +89,8 @@
             <a class="page-num" href="${pageContext.request.contextPath}/goods/findByPage.do?index=1">1</a>
             <a class="page-num " href="${pageContext.request.contextPath}/goods/findByPage.do?index=2">2</a>
             <a class="page-num " href="${pageContext.request.contextPath}/goods/findByPage.do?index=3">3</a>
-            <a class="page-arrow arrow-right" href="${pageContext.request.contextPath}/goods/findByPage.do?index=${index + 1}">下一页</a>
+            <a class="page-arrow arrow-right"
+               href="${pageContext.request.contextPath}/goods/findByPage.do?index=${index + 3}">下一页</a>
         </div>
         <!-- 分页 结束 -->
     </div>

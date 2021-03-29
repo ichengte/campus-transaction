@@ -16,15 +16,7 @@
 
     <title>NCU专属二手物品交易平台</title>
 
-    <link media="all" href="${pageContext.request.contextPath}/css/index.css" type="text/css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 
-    <script src="${pageContext.request.contextPath}/js/goods_list.js" type="text/javascript"></script>
-
-    <script src="${pageContext.request.contextPath}/js/add.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/hm.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/common.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/common_001.js" type="text/javascript"></script>
     <link rel="icon" href="#" type="image/x-icon">
     <script type="text/javascript">
         $(document).ready(function () {
@@ -35,6 +27,8 @@
             $('.page-num').eq(index - 1).addClass("cur");
         });
     </script>
+    <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/goods_list.js" type="text/javascript"></script>
 
 </head>
 
@@ -47,10 +41,10 @@
     <div class="main center">
         <div class="rank-by clearfix cur1" data-cur="1">
             <div class="rank-title-wr">
-                <a href="${pageContext.request.contextPath}/common/goods_list.jsp?rank=publish_time" class="rank-title default" data-rank="1">时间</a>
-                <a href="${pageContext.request.contextPath}/common/goods_list.jsp?rank=credit" class="rank-title default">信用</a>
-                <a href="${pageContext.request.contextPath}/common/goods_list.jsp?rank=sell_price" class="rank-title default">价格</a>
-                <a href="${pageContext.request.contextPath}/common/goods_list.jsp?rank=recommendation" class="rank-title default">热度</a>
+                <a href="${pageContext.request.contextPath}/common/goods_list.jsp?rank1=publish_time" class="rank-title default" data-rank="1">时间</a>
+                <a href="${pageContext.request.contextPath}/common/goods_list.jsp?rank1=credit" class="rank-title default">信用</a>
+                <a href="${pageContext.request.contextPath}/common/goods_list.jsp?rank1=sell_price" class="rank-title default">价格</a>
+                <a href="${pageContext.request.contextPath}/common/goods_list.jsp?rank1=recommendation" class="rank-title default">热度</a>
             </div>
             <div class="wave ease2"></div>
         </div>

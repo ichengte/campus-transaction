@@ -69,7 +69,7 @@
                         success:function (res) {
                             if (res.success){
                                 alert("发布成功");
-                                location.href="/common/user_center.jsp"
+                                location.href="/common/user_center.jsp?username=${sessionScope.user.username}"
                             } else {
                                 alert("发布失败，请重新操作！");
                             }

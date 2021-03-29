@@ -5,6 +5,7 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.user.entity.User;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Author: TonyJam
@@ -12,7 +13,7 @@ import java.util.List;
  * Date: 2021/3/24 17:12
  */
 public interface GoodsMapper {
-    List<Goods> findAll(String rank);
+    List<Goods> findAll(Map<String,Object> map);
     Goods findById(Integer gid);
     List<Goods> findByPage(Integer index);
     List<Goods> findUserGoods(String username);

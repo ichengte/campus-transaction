@@ -13,7 +13,14 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Insert title here</title>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/cookie.js"></script>
+    <link media="all" href="${pageContext.request.contextPath}/css/index.css" type="text/css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+
+    <script src="${pageContext.request.contextPath}/js/add.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/hm.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/common.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/common_001.js" type="text/javascript"></script>
+<%--    <script type="text/javascript" src="${pageContext.request.contextPath}/js/cookie.js"></script>--%>
     <style type="text/css">
         .loginandrigist {
             margin-left: 1000px;
@@ -57,10 +64,10 @@
 
             <div class="search-hots center ease2">
                 <span>热门：</span>
-                <a class="hots" href="goods_list.jsp?category=101" target="_top">手机</a>
-                <a class="hots" href="goods_list.jsp?category=201" target="_top">笔记本</a>
-                <a class="hots" href="goods_list.jsp?category=701" target="_top">乐器</a>
-                <a class="hots" href="goods_list.jsp?category=8" target="_top">图书</a>
+                <a class="hots" href="${pageContext.request.contextPath}/common/goods_list.jsp?category=101" target="_top">手机</a>
+                <a class="hots" href="${pageContext.request.contextPath}/common/goods_list.jsp?category=201" target="_top">笔记本</a>
+                <a class="hots" href="${pageContext.request.contextPath}/common/goods_list.jsp?category=701" target="_top">乐器</a>
+                <a class="hots" href="${pageContext.request.contextPath}/common/goods_list.jsp?category=8" target="_top">图书</a>
             </div>
         </div>
         <%-- <input   type="text" value="${sessionScope.user.id}"> --%>
