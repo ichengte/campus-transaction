@@ -19,6 +19,7 @@ function initUserInfo(username){
 		dataType:"json",
 		data:{"username":username},
 		success:function(res){
+			// alert("edit")
 			var realname = res.realname;
 			var username = res.username;
 			var phone = res.phone;
@@ -35,7 +36,7 @@ function initUserInfo(username){
 					'<ul class="infos" id="balance"><li>余额</li><li class="right_info">'+balance+'</li></ul></div>' +
 					'<ul class="infos" id="credit"><li>信用分</li><li class="right_info">'+credit+'</li></ul></div>';
 			var str2 = '<div id="base_info">' +
-			'<h2>基本信息<span id="edit_info">编辑</span><span id="save_info">保存</span></h2>' +
+			'<h2>基本信息<span id="edit_info" onclick="edit()">编辑</span><span id="save_info" onclick="save()">保存</span></h2>' +
 			'<ul class="infos"><li>用户名</li><li class="right_info"><span id="username_span">'+username+'</span><input value="'+username+'" id="username" type="text" name="username" disabled></li></ul> '+
 			'<ul class="infos"><li>手机</li><li class="right_info"><span id="phone_span">'+phone+'</span><input value="'+phone+'" id="phone" type="text" name="phone"></li></ul>' +
 			'<ul class="infos"><li>QQ</li><li class="right_info"><span id="qq_span">'+qq+'</span><input value="'+qq+'" id="qq" type="text" name="qq"></li></ul>' +
@@ -54,64 +55,62 @@ function initUserInfo(username){
 			$("#my_info").append(myinfo);
 		}
 	});
-	edit_info();
 }
 
-function edit_info(){
-	$("#edit_info").bind('click',function(){
-		$(this).css({
-			display: "none"
-		});
-		$("#save_info").css({
-			display: "block"
-		});
-		$(".right_info span").css({
-			display: "none"
-		});
-		$(".right_info input").css({
-			display: "inline"
-		});
+function edit(){
+	$(this).css({
+		display: "none"
 	});
-	$("#save_info").bind('click',function(){
-		var username = $("#username").val(),
-			phone = $("#phone").val(),
-			qq = $("#qq").val(),
-			academy=$("#academy").val(),
-			grade=$("#grade").val(),
-			sex=$("#sex").val()
-		$.post(
-			'/user/saveInfo.do',
-			{
-				username : username,
-				phone : phone,
-				qq : qq,
-				academy:academy,
-				grade:grade,
-				sex:sex
-			},
-			function(res) {
-				$("#qq_span").text(qq);
-				$("#phone_span").text(phone);
-				$("#username_span").text(username);
-				$("#academy_span").text(academy);
-				$("#grade_span").text(grade);
-				$("#sex_span").text(sex);
-				// alert(resp);
-				$("#save_info").css({
-					display: "none"
-				});
-				$("#edit_info").css({
-					display: "block"
-				});
-				$(".right_info input").css({
-					display: "none"
-				});
-				$(".right_info span").css({
-					display: "inline"
-				});
-			}
-		);
+	$("#save_info").css({
+		display: "block"
 	});
+	$(".right_info span").css({
+		display: "none"
+	});
+	$(".right_info input").css({
+		display: "inline"
+	});
+}
+
+function save(){
+	var username = $("#username").val(),
+		phone = $("#phone").val(),
+		qq = $("#qq").val(),
+		academy=$("#academy").val(),
+		grade=$("#grade").val(),
+		sex=$("#sex").val()
+	$.post(
+		'/user/saveInfo.do',
+		{
+			username : username,
+			phone : phone,
+			qq : qq,
+			academy:academy,
+			grade:grade,
+			sex:sex
+		},
+		function(res) {
+			$("#qq_span").text(qq);
+			$("#phone_span").text(phone);
+			$("#username_span").text(username);
+			$("#academy_span").text(academy);
+			$("#grade_span").text(grade);
+			$("#sex_span").text(sex);
+			// alert(resp);
+			$("#save_info").css({
+				display: "none"
+			});
+			$("#edit_info").css({
+				display: "block"
+			});
+			$(".right_info input").css({
+				display: "none"
+			});
+			$(".right_info span").css({
+				display: "inline"
+			});
+		}
+	);
 }
 
 

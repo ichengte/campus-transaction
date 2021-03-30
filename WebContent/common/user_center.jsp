@@ -207,6 +207,5 @@
         location.href = "/user-login.jsp";
     }
 </script>
-
 </body>
 </html>

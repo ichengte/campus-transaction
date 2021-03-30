@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" import="java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<% if (session.getAttribute("index") == null) {%>
+<% if (session.getAttribute("goodsList") == null) {%>
 <jsp:forward page="/goods/findByPage.do">
     <jsp:param value="1" name="index"/>
 </jsp:forward>
@@ -37,6 +37,7 @@
     </script>
 </head>
 <body>
+
 <div class="container">
     <div class="main center">
         <div class="wrap-site mt20">
@@ -59,7 +60,7 @@
                         <a class="img" href="${pageContext.request.contextPath}/common/goods_detail.jsp?gid=${g.gid}"
                            target="_top"><img id="pro_img" src="/goods/${g.picture }" alt="${g.title }"></a>
                         <div class="info">
-                            <div class="price">"${g.sell_price }"</div>
+                            <div class="price">${g.sell_price }</div>
                             <div class="name">
                                 <a style="padding-left: 47px;"
                                    href="${pageContext.request.contextPath}/common/goods_detail.jsp?gid=${g.gid}"
