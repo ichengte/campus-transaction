@@ -101,4 +101,8 @@
         values(#{title},#{publish_time},#{content},#{buy_price},#{sell_price},#{picture},#{category.cid},#{user.uuid},#{area})
     </insert>
 
+    <delete id="delete">
+        delete from tony_goods where gid=#{0}
+    </delete>
+
 </mapper>

@@ -22,4 +22,5 @@ public interface GoodsService {
     List<Goods> searchByCategory(Integer category, String rank);
     Boolean saveInfo(Goods goods);
     Boolean goodsPublish(Goods goods);
+    Boolean delete(Integer gid);
 }

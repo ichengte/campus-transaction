@@ -155,7 +155,7 @@ function initUserGoods(username){
 					'&nbsp;&nbsp;<span id="prostate">发布时间：'+res[i].publish_time+'</span>'+
 					str2+
 					str1+
-					str+
+					str+'<span id="rec" class="enshrine_it make_edition" onclick=' + 'deleteGoods(' + res[i].gid + ')>删除</span>'+
 	                '<a href="goods_publish.jsp?edit=1&gid='+res[i].gid+'" target="_top"><span class="enshrine_it  make_edition">编辑</span></a> '+
 	                '</div></div><a href="goods_detail.jsp?gid='+res[i].gid+'">'+
 	                '<img class="enshr_ph" src="/goods/'+res[i].picture+'" alt="'+res[i].title+'"></a></div>');
@@ -165,6 +165,23 @@ function initUserGoods(username){
 
 		}
 	});
+}
+
+function deleteGoods(gid) {
+	if (!confirm('确定要删除吗？')) {
+		return;
+	}
+	$.post('/goods/delete.do',
+		{"gid" : gid},
+		function(res){
+			if (res.success) {
+				alert("删除成功");
+				location.reload();
+			} else {
+				alert("删除失败，请重新操作");
+				location.reload();
+			}
+		});
 }
 
 function onShelf(gid, status){

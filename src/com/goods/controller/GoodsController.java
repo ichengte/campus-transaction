@@ -156,8 +156,7 @@ public class GoodsController {
         return map;
     }
 
-    @RequestMapping(value = "/goodsPublish.do")
-    @ResponseBody
+
     public Object goodsPublish(GoodsDto goodsDto) throws IOException {
         Goods goods = goodsDto.getGoods();
         MultipartFile file = goodsDto.getPicture();
@@ -176,6 +175,19 @@ public class GoodsController {
         System.out.println("goodsPublish.do" + goods);
         HashMap<String, Object> map = new HashMap<>();
         if (goodsService.goodsPublish(goods)){
+            map.put("success", 1);
+        } else {
+            map.put("success", 0);
+        }
+        return map;
+    }
+
+    @RequestMapping(value = "/delete.do")
+    @ResponseBody
+    public Object delete(Integer gid){
+
+        HashMap<String, Object> map = new HashMap<>();
+        if (goodsService.delete(gid)){
             map.put("success", 1);
         } else {
             map.put("success", 0);
