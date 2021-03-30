@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+    <%@ include file="/common/shop_header.jsp" %>
     <script type="text/javascript">
         function getUrlParam(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
@@ -16,11 +17,9 @@
     </script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>商品发布</title>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.min.js"></script>
+<%--    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>--%>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-form.js"></script>
-    <script src="../js/hm.js" type="text/javascript"></script>
-    <script src="../js/add.js" type="text/javascript"></script>
-    <script src="../js/release.js" type="text/javascript"></script>
+<%--    <script src="../js/release.js" type="text/javascript"></script>--%>
     <script src="../js/c.js" type="text/javascript"></script>
     <script src="../js/common.js" type="text/javascript"></script>
     <script src="../js/zh_cn.js" type="text/javascript"></script>
@@ -38,14 +37,8 @@
             window.location.href = "/user-login.jsp";
         }
 
-
-        var cid2 = 0;
-        var currentShowcid2 = 0;
         $(document).ready(function () {
             $('.form-submit').bind("click", function () {
-                // var data = $('#goodsPublish').serialize();
-                // alert(data);
-                // alert(editt);
                 if (editt == 1) {
                     $('#goodsPublish').ajaxSubmit({
                         method: 'POST',
@@ -61,8 +54,6 @@
                         }
                     })
                 } else {
-                    // alert();
-                    // $('#goodsPublish').submit();
                     $("#goodsPublish").ajaxSubmit({
                         type:'POST',
                         url:"/goods/goodsPublish.do",
@@ -78,25 +69,22 @@
                 }
 
             });
+            var index = 0;
+            $(".cid2").hide();
+            $(".cid2").eq(index).show();
             $("#cid").change(function () {
-                $("#cid option").each(function (i, o) {
-                    if ($(this).attr("selected")) {
-                        $(".cid2").hide();
-                        $(".cid2").eq(i).show();
-                        currentShowcid2 = i;
-                    }
-                });
-
+                var index = $(this).val();
+                // alert(index);
+                $(".cid2").hide();
+                $(".cid2").eq(index).show();
                 $(".cid2").each(function (i, o) {
-                    if (i == currentShowcid2) {
+                    if (i == index) {
                         cid2 = $(".cid2").eq(i).val();
                         $("#category-value").val(cid2)
-                        // alert(cid2);
                     }
                 });
 
             });
-            $("#cid").change();
             if (gid) {
                 initProducToEdit();
             }
@@ -131,60 +119,12 @@
                 }
             })
         }
-
-
-        /* function getSelectValue(){
-       alert("1级="+$("#cid").val());
-       $(".cid2").each(function(i,o){
-            if(i == currentShowcid2){
-               alert("2级="+$(".cid2").eq(i).val());
-               cid2=$(".cid2").eq(i).val();
-            }
-      });
-       alert("分类1："+cid2)
-   }  */
-
-
-
-        /* function productrelease(){
-            var cid2=0;
-            var pname=$("#title").val(),
-                pdesc=$("#desc").val(),
-                buyPrice=$("#buyPrice").val(),
-                salePrice=$("#salePrice").val();
-            $(".cid2").each(function(i,o){
-                 if(i == currentShowcid2){
-                    cid2=$(".cid2").eq(i).val();
-                 }
-           });
-            alert("分类2："+cid2+"\n"+pname+"\n"+pdesc+"\n"+buyPrice+"\n"+salePrice)
-
-            $.post(
-                    "productrelease",
-                    {
-                        pname : pname,
-                        pdesc : pdesc,
-                        buyPrice : buyPrice,
-                        salePrice : salePrice,
-                        cid2 : cid2,
-                    },
-                    function(res) {
-                        res = $.parseJSON(res);
-                        if (res.code != 0) {
-                            alert(res.msg);
-                            $('.form-submit').removeAttr('disabled', false);
-                        } else {
-                            window.location.href = res.data.goods_url;
-                        }
-                    }
-                );
-        } */
     </script>
 </head>
 
 
 <body>
-<%@ include file="/common/shop_header.jsp" %>
+
 <div class="container">
     <div class="main center">
         <img class="release-icon-main" src="${pageContext.request.contextPath}/images/release-icon.png" alt="">
@@ -280,7 +220,6 @@
                                 <select class="cid2">
                                     <option value="101">手机</option>
                                     <option value="102">手机配件</option>
-
                                 </select>
                                 <select class="cid2">
                                     <option value="201">笔记本</option>

@@ -6,9 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>发布求购</title>
 
-    <script src="${pageContext.request.contextPath}/js/hm.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/add.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/release.js" type="text/javascript"></script>
+<%--    <script src="${pageContext.request.contextPath}/js/hm.js" type="text/javascript"></script>--%>
+<%--    <script src="${pageContext.request.contextPath}/js/release.js" type="text/javascript"></script>--%>
     <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/plupload.full.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/zh_cn.js" type="text/javascript"></script>

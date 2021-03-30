@@ -43,14 +43,14 @@ public class GoodsController {
                 rank_idx = 6;
                 break;
         }
-        System.out.println(rank_idx);
+//        System.out.println(rank_idx);
         goodsList = goodsService.findAll(rank_idx);
 //        System.out.println(goodsList);
 //        for (Goods g : goodsList) {
 //            System.out.println(g.getPublish_time());
 //        }
         session.setAttribute("index", 1);
-        session.setAttribute("goodsList", goodsList);
+//        session.setAttribute("goodsList", goodsList);
         return goodsList;
     }
 
@@ -133,7 +133,7 @@ public class GoodsController {
         return goodsList;
     }
 
-    @RequestMapping(value = "saveInfo.do")
+    @RequestMapping(value = "/saveInfo.do")
     @ResponseBody
     public Object saveInfo(GoodsDto goodsDto) throws IOException {
         Goods goods = goodsDto.getGoods();
@@ -156,7 +156,7 @@ public class GoodsController {
         return map;
     }
 
-    @RequestMapping(value = "goodsPublish.do")
+    @RequestMapping(value = "/goodsPublish.do")
     @ResponseBody
     public Object goodsPublish(GoodsDto goodsDto) throws IOException {
         Goods goods = goodsDto.getGoods();

@@ -15,12 +15,7 @@
     <title>Insert title here</title>
     <link media="all" href="${pageContext.request.contextPath}/css/index.css" type="text/css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js" type="text/javascript"></script>
-
-    <script src="${pageContext.request.contextPath}/js/add.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/hm.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/common.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/common_001.js" type="text/javascript"></script>
-<%--    <script type="text/javascript" src="${pageContext.request.contextPath}/js/cookie.js"></script>--%>
     <style type="text/css">
         .loginandrigist {
             margin-left: 1000px;

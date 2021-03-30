@@ -6,7 +6,7 @@ function getUrlParam(name) {
         }
 var username = getUrlParam('username');
 
-$(document).ready(function(){
+$(function(){
 	initUserInfo(username);
 	initUserGoods(username);
 	initWantList(username);
@@ -48,11 +48,69 @@ function initUserInfo(username){
 			$("#userpoint").html('<p>'+ res.points+'</p>');
 
 			$("#user_photo").html('<img id="origin_ph" src="user/'+profile+'" alt="大头像">'+
-			  ' <img id="change_photo" src="imgs/person_hover.png" alt="更换头像" style="display:none;">');
+			  ' <img id="change_photo" src="/images/person_hover.png" alt="更换头像" style="display:none;">');
 
 			$("#user_big_name").html('<p>'+realname+'</p>');
 			$("#my_info").append(myinfo);
 		}
+	});
+	edit_info();
+}
+
+function edit_info(){
+	$("#edit_info").bind('click',function(){
+		$(this).css({
+			display: "none"
+		});
+		$("#save_info").css({
+			display: "block"
+		});
+		$(".right_info span").css({
+			display: "none"
+		});
+		$(".right_info input").css({
+			display: "inline"
+		});
+	});
+	$("#save_info").bind('click',function(){
+		var username = $("#username").val(),
+			phone = $("#phone").val(),
+			qq = $("#qq").val(),
+			academy=$("#academy").val(),
+			grade=$("#grade").val(),
+			sex=$("#sex").val()
+		$.post(
+			'/user/saveInfo.do',
+			{
+				username : username,
+				phone : phone,
+				qq : qq,
+				academy:academy,
+				grade:grade,
+				sex:sex
+			},
+			function(res) {
+				$("#qq_span").text(qq);
+				$("#phone_span").text(phone);
+				$("#username_span").text(username);
+				$("#academy_span").text(academy);
+				$("#grade_span").text(grade);
+				$("#sex_span").text(sex);
+				// alert(resp);
+				$("#save_info").css({
+					display: "none"
+				});
+				$("#edit_info").css({
+					display: "block"
+				});
+				$(".right_info input").css({
+					display: "none"
+				});
+				$(".right_info span").css({
+					display: "inline"
+				});
+			}
+		);
 	});
 }
 
@@ -76,7 +134,7 @@ function initUserGoods(username){
 			} else if (res[i].status == 2){
 				res[i].status = "已售出";
 				str1 += '<span class="enshrine_it make_edition" onclick="onShelf('+res[i].gid+ ',' + '1' +');">上架</span>';
-				str2 += '<span class="enshrine_it" onclick="sellout('+res[i].gid + ','+ '2' +'); " style="background:grey;color:whitesmoke;">已售出</span>';
+				str2 += '<span class="enshrine_it" style="background:grey;color:whitesmoke;">已售出</span>';
 			} else {
 				res[i].status = "已下架";
 				str1 += '<span class="enshrine_it make_edition" onclick="onShelf('+res[i].gid+ ',' + '1' +');">上架</span>';

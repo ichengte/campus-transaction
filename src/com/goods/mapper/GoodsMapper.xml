@@ -44,7 +44,7 @@
     <!-- findAll -->
     <select id="findAll" resultMap="goodsResult">
         select g.*, u.*, c.* from tony_user u, tony_goods g, tony_category c
-        where g.cid = c.cid and g.uuid = u.uuid and g.status = 1 order by ${rank} desc
+        where g.cid = c.cid and g.uuid = u.uuid and g.status = 1 order by publish_time desc
     </select>
 
     <!-- findById -->
@@ -60,7 +60,7 @@
             (select g.gid, g.title, g.publish_time, g.content, g.buy_price, g.sell_price, g.picture, g.views, g.status,
             g.recommendation, u.uuid, u.realname, c.cid, c.name, rownum r from tony_user u, tony_goods g, tony_category c
             where g.cid = c.cid and g.uuid = u.uuid) res
-            where r>(#{index}-1)*8 and r<=#{index}*8 order by recommendation desc
+            where r>(#{index}-1)*8 and r<=#{index}*8 order by publish_time desc
         ]]>
     </select>
     <select id="findUserGoods" resultMap="goodsResult">

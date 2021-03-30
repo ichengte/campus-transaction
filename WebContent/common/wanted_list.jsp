@@ -9,9 +9,6 @@
     <link rel="icon" href="${pageContext.request.contextPath}/favicon.ico">
     <link rel="icon" href="${pageContext.request.contextPath}/favicon.ico" type="image/x-icon">
 
-    <script src="${pageContext.request.contextPath}/js/hm.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/detail.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/js/add.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/jquery.mousewheel-3.0.2.pack.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/jquery.fancybox-1.3.1.js" type="text/javascript"></script>
