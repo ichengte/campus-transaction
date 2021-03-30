@@ -45,4 +45,9 @@ public class UserServiceImpl implements UserService {
 		return userMapper.saveInfo(user);
 	}
 
+	@Override
+	public Boolean changeProfile(User user) {
+		return userMapper.changeProfile(user);
+	}
+
 }

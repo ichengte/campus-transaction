@@ -4,8 +4,6 @@ $(window).load(function(){
     login_close();
     //ershou_photo_slide();
     wave_move();
-    edit_info();
-    change_photo();
     /*choose_sch();*/
     student_id();
     if($("#user_msg").length>0){
@@ -38,18 +36,7 @@ function student_id(){
     });
 }
 
-function change_photo(){
-    $("#user_photo").bind('mouseenter',function(){
-       $("#change_ph").css({
-            display: "block"
-        })
-    });
-    $("#user_photo").bind('mouseleave',function(){
-       $("#change_ph").css({
-            display: "none"
-        })
-    });
-}
+
 function login_slider(){
     var in_person = 0;
     var in_slider = 0;

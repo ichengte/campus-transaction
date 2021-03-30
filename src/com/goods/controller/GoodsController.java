@@ -32,6 +32,7 @@ public class GoodsController {
     public Object findAll(HttpSession session, String rank){
         List<Goods> goodsList;
         Integer rank_idx = 3;
+        if (rank == null) rank = "publish_time";
         switch (rank) {
             case "credit":
                 rank_idx = 24;
@@ -59,6 +60,7 @@ public class GoodsController {
     public Goods findById(Integer gid){
         Goods goods = goodsService.findById(gid);
         System.out.println(goods);
+        goodsService.addGoodsViews(gid);
         return goods;
     }
 

@@ -23,4 +23,6 @@ public interface GoodsService {
     Boolean saveInfo(Goods goods);
     Boolean goodsPublish(Goods goods);
     Boolean delete(Integer gid);
+    Boolean addGoodsViews(Integer gid);
+
 }

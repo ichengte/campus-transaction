@@ -107,12 +107,12 @@ div.center { position: relative; }
 .hide { display: none !important; }
 .show { display: block !important; }
 .ershou-details { width: 100%; }
-.ershou-photos-wr { position: relative; width: 540px; height: 540px; float: left; text-align: center; overflow: hidden; }
+.ershou-photos-wr { position: relative; width: 540px; height: 612px; float: left; text-align: center; overflow: hidden; }
 .ershou-favorite { display: block; width: 60px; height: 60px; position: absolute; top: 20px; right: 20px; z-index: 10; border-radius: 100%; background: rgba(255, 255, 255, 0.86) url('../images/heart.png') no-repeat scroll center 10px; color: rgb(255, 178, 0); font-size: 1.17em; text-align: center; line-height: 85px; vertical-align: middle; text-decoration: none; }
 .ershou-favorite:hover { background-color: rgba(248, 252, 226, 0.86); }
 .bigger-photo-box { width: 100%; height: 100%; overflow: hidden; }
 a.bigger-photo { display: block; width: 100%; height: 100%; overflow: hidden; line-height: 560px; background-color: rgb(247, 247, 247); }
-.ershou-photos-wr .bigger{ width: 560px;height: 560px; vertical-align: middle;}
+.ershou-photos-wr .bigger{ width: 560px;height: 612px; vertical-align: middle;}
 .ershou-photo-slide-layer { background: rgb(255, 255, 255) none repeat scroll 0% 0%; position: absolute; bottom: 0px; z-index: 50; width: 100%; height: 80px; opacity: 0.5; }
 .ershou-photo-slide { position: absolute; bottom: 0px; z-index: 99; width: 100%; height: 80px; text-align: center; }
 .ershou-small-photos { display: inline-block; height: 80px; width: 70px; text-align: center; line-height: 80px; }
@@ -177,8 +177,8 @@ div.comment .avatar, .post-comment .avatar { padding: 3px; }
 .ershou-detail li .value span { vertical-align: middle; }
 @media screen and (min-width: 1280px) {
 	.main { width: 920px; }
-	.ershou-photos-wr { width: 560px; height: 560px; text-align: center; }
-	.ershou-info { margin-left: 560px; height: 560px; }
+	.ershou-photos-wr { width: 560px; height: 612px; text-align: center; }
+	.ershou-info { margin-left: 560px; height: 612px; }
 	.comments { width: 545px; }
 	.concerned-goods { width: 300px; }
 }

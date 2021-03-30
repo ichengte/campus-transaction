@@ -60,15 +60,8 @@
             </if>
          </where>
     </select>
-    
-    <!-- 删除 -->
-    <delete id="delete" parameterType="int">
-        delete from user1 where id=#{id}
-    </delete>
-    
 
-    <!-- 修改 -->
-    <update id="update" parameterType="com.user.entity.User">
-        update user1 set id=#{id},uname=#{uname},upwd=#{upwd},type=#{type} where id=#{id}
+    <update id="changeProfile">
+        update tony_user set profile=#{profile} where uuid=#{uuid}
     </update>
 </mapper>

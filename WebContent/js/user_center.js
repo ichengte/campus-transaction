@@ -24,17 +24,18 @@ function initUserInfo(username){
 			var username = res.username;
 			var phone = res.phone;
 			var qq = res.qq;
-			var profile = res.profile;
 			var academy = res.academy;
 			var grade = res.grade;
 			var sex = res.sex;
 			var balance = res.balance;
 			var credit = res.credit;
+			var profile = res.profile
 			// alert(balance);
-			var str1 = '<div id="account_info"><h2>账户信息</h2>' +
+			var str1 = '<div id="account_info"><h2>账户信息</h2><form enctype="multipart/form-data" id="myprofile"><input name="user.uuid" value="'+ res.uuid +'" type="text" hidden>' +
+				'<ul class="infos" id="uuid"><li><span id="user_photo" onmouseleave="ml()" onmouseenter="me()"><input onchange="change_profile()" name="file" type="file" style="position:absolute;z-index:999;opacity:0;width:180px;height:180px;margin-top:0px;cursor: pointer;background-color: border: 0"></span></li></ul>' +
 					'<ul class="infos" id="uuid"><li>真实姓名</li><li class="right_info">'+realname+'</li></ul>' +
 					'<ul class="infos" id="balance"><li>余额</li><li class="right_info">'+balance+'</li></ul></div>' +
-					'<ul class="infos" id="credit"><li>信用分</li><li class="right_info">'+credit+'</li></ul></div>';
+					'<ul class="infos" id="credit"><li>信用分</li><li class="right_info">'+credit+'</li></ul></form></div>';
 			var str2 = '<div id="base_info">' +
 			'<h2>基本信息<span id="edit_info" onclick="edit()">编辑</span><span id="save_info" onclick="save()">保存</span></h2>' +
 			'<ul class="infos"><li>用户名</li><li class="right_info"><span id="username_span">'+username+'</span><input value="'+username+'" id="username" type="text" name="username" disabled></li></ul> '+
@@ -46,14 +47,50 @@ function initUserInfo(username){
 			'</div>';
 			var str = str1+str2;
 			var myinfo = $(str);
-			$("#userpoint").html('<p>'+ res.points+'</p>');
 
-			$("#user_photo").html('<img id="origin_ph" src="user/'+profile+'" alt="大头像">'+
-			  ' <img id="change_photo" src="/images/person_hover.png" alt="更换头像" style="display:none;">');
 
-			$("#user_big_name").html('<p>'+realname+'</p>');
 			$("#my_info").append(myinfo);
+			$("#user_photo").append('<img id="origin_ph" src="/user/'+profile+'" alt="大头像">'+
+				' <img id="change_photo" src="/images/person_hover.png" alt="更换头像" style="display:none;">');
+			$("#user_big_name").html('<p>'+realname+'</p>');
 		}
+	});
+}
+
+function change_profile() {
+	$("#myprofile").ajaxSubmit({
+		url:"/user/changeProfile.do",
+		dataType:'json',
+		type:'POST',
+		success: function (res) {
+			if (res.success){
+				alert("修改成功");
+				location.reload();
+			} else {
+				alert("修改失败，请重新操作");
+			}
+		}
+	})
+}
+
+function me(){
+	// alert("111")
+	$("#origin_ph").css({
+		"display": "block",
+		"opacity":"0.2"
+	});
+	$("#change_photo").css({
+		"display": "block",
+		"opacity":"0.8"
+	})
+}
+function ml() {
+	// alert("111")
+	$("#change_photo").css({
+		"display": "none"
+	})
+	$("#origin_ph").css({
+		"opacity":"1"
 	});
 }
 

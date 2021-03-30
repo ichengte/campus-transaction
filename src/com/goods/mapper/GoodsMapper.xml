@@ -53,6 +53,10 @@
         where g.cid = c.cid and g.uuid = u.uuid and g.gid = #{gid}
     </select>
 
+    <update id="addGoodsViews">
+        update tony_goods set views=views+1 where gid=#{0}
+    </update>
+
     <!--    findByPage-->
     <select id="findByPage" resultMap="goodsResult">
         <![CDATA[
@@ -104,5 +108,7 @@
     <delete id="delete">
         delete from tony_goods where gid=#{0}
     </delete>
+
+
 
 </mapper>

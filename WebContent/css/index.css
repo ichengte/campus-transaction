@@ -1023,10 +1023,13 @@ div.center {
     display: inline-block;
     position: relative;
     width: 200px;
+    margin-left: 10px;
     height: 265px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     float: left;
     font-size: 12px;
+    box-shadow: 3px 3px 3px #656B79;
+    border-radius: 10px;
 }
 
 .item.fixed {

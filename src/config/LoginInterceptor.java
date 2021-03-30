@@ -87,6 +87,9 @@ public class LoginInterceptor implements HandlerInterceptor {
         if (url.indexOf("delete.do") > 0){
             return true;
         }
+        if (url.indexOf("changeProfile.do") > 0){
+            return true;
+        }
         response.sendRedirect("/user-login.jsp");
         return false;
     }

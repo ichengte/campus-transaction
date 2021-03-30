@@ -89,4 +89,26 @@ public class UserController {
 		return map;
 	}
 
+	@RequestMapping(value = "/changeProfile.do")
+	@ResponseBody
+	public Object changeProfile(UserDto userDto) throws IOException {
+		MultipartFile file = userDto.getFile();
+		String profile = file.getOriginalFilename();
+		System.out.println(profile);
+
+		File filepath = new File("C:/GitHub/campus-transaction/WebContent/user/" + profile);
+		file.transferTo(filepath);
+
+		User user = userDto.getUser();
+		user.setProfile(profile);
+		HashMap<String, Object> map = new HashMap<>();
+		if (userService.changeProfile(user)){
+			map.put("success", 1);
+			map.put("profile", profile);
+		} else {
+			map.put("success", 0);
+		}
+		return map;
+	}
+
 }

@@ -9,6 +9,8 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<%@ include file="../common/shop_header.jsp" %>
+<%@ include file="../common/shop_left.jsp" %>
 <head>
     <script type="text/javascript">
         username = ${sessionScope.user.username};
@@ -18,7 +20,9 @@
 
     <link media="all" href="${pageContext.request.contextPath}/css/user_center.css" type="text/css" rel="stylesheet">
     <link media="all" href="${pageContext.request.contextPath}/css/index.css" type="text/css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<%--    <script src="${pageContext.request.contextPath}/js/jquery-1.10.1.min.js" type="text/javascript"></script>--%>
+<%--    <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>--%>
+    <script src="${pageContext.request.contextPath}/js/jquery-form.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/user_center.js" type="text/javascript"></script>
     <link media="all" href="${pageContext.request.contextPath}/css/wanted_list.css" type="text/css" rel="stylesheet">
 
@@ -40,8 +44,7 @@
     </div>
 </div>
 
-<%@ include file="../common/shop_header.jsp" %>
-<%@ include file="../common/shop_left.jsp" %>
+
 
 
 ﻿
@@ -206,6 +209,7 @@
         alert("请您先登录");
         location.href = "/user-login.jsp";
     }
+
 </script>
 </body>
 </html>

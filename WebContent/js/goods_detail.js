@@ -56,6 +56,7 @@ function initProductWithUserInfo() {
 }
 
 $(document).ready(function () {
+
 	initProductWithUserInfo();
 	$("#buy-button").click(function () {
 		var str = "${sessionScope.user.username}";

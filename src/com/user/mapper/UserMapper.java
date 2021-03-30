@@ -23,4 +23,5 @@ public interface UserMapper {
 	Boolean register(User user);
 	User findByUsername(String username);
 	Boolean saveInfo(User user);
+	Boolean changeProfile(User user);
 }

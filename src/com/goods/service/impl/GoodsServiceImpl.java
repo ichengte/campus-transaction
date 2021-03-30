@@ -78,4 +78,9 @@ public class GoodsServiceImpl implements GoodsService {
     public Boolean delete(Integer gid) {
         return goodsMapper.delete(gid);
     }
+
+    @Override
+    public Boolean addGoodsViews(Integer gid) {
+        return goodsMapper.addGoodsViews(gid);
+    }
 }
