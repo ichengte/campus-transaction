@@ -11,6 +11,8 @@ import org.apache.ibatis.annotations.Param;
 
 import com.user.entity.User;
 
+import java.util.List;
+
 
 public interface UserMapper {
 	/**
@@ -24,4 +26,8 @@ public interface UserMapper {
 	User findByUsername(String username);
 	Boolean saveInfo(User user);
 	Boolean changeProfile(User user);
+	List<User> findAll();
+	List<User> findByRealname(String realname);
+	Boolean add(User user);
+	Boolean delete(User user);
 }

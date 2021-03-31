@@ -96,6 +96,9 @@ public class LoginInterceptor implements HandlerInterceptor {
         if (url.indexOf("add.do") > 0){
             return true;
         }
+        if (url.indexOf("findByRealname.do") > 0){
+            return true;
+        }
         response.sendRedirect("/user-login.jsp");
         return false;
     }

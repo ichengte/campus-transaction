@@ -30,27 +30,27 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">用户姓名</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="username" autocomplete="off" class="layui-input">
+                                <input type="text" name="realname" autocomplete="off" class="layui-input">
                             </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">用户性别</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="sex" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">用户学院</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="city" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">用户年级</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="classify" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
+<%--                        </div>--%>
+<%--                        <div class="layui-inline">--%>
+<%--                            <label class="layui-form-label">用户性别</label>--%>
+<%--                            <div class="layui-input-inline">--%>
+<%--                                <input type="text" name="sex" autocomplete="off" class="layui-input">--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="layui-inline">--%>
+<%--                            <label class="layui-form-label">用户学院</label>--%>
+<%--                            <div class="layui-input-inline">--%>
+<%--                                <input type="text" name="city" autocomplete="off" class="layui-input">--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="layui-inline">--%>
+<%--                            <label class="layui-form-label">用户年级</label>--%>
+<%--                            <div class="layui-input-inline">--%>
+<%--                                <input type="text" name="classify" autocomplete="off" class="layui-input">--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
                         <div class="layui-inline">
                             <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
                         </div>
@@ -84,7 +84,7 @@
 
         table.render({
             elem: '#currentTableId',
-            url: '../api/user.json',
+            url: '/user/findAll.do',
             toolbar: '#toolbarDemo',
             defaultToolbar: ['filter', 'exports', 'print', {
                 title: '提示',
@@ -93,16 +93,21 @@
             }],
             cols: [[
                 {type: "checkbox", width: 50},
-                {field: 'id', width: 80, title: 'ID', sort: true},
+                {field: 'uuid', width: 80, title: 'ID', sort: true},
                 {field: 'username', width: 80, title: '用户名'},
-                {field: 'userpassword', width: 80, title: '密码'},
-                {field: 'name', width: 80, title: '姓名'},
+                {field: 'userpwd', width: 80, title: '密码'},
+                {field: 'balance', width: 80, title: '余额'},
+                {field: 'credit', width: 80, title: '信用分'},
+                {field: 'realname', width: 80, title: '真实姓名'},
                 {field: 'sex', width: 80, title: '性别'},
                 {field: 'academy', width: 80, title: '学院'},
                 {field: 'grade', width: 80, title: '年级'},
                 {field: 'qq', width: 160, title: 'QQ'},
                 {field: 'phone', width: 160, title: '电话'},
-                {field: 'prfile', width: 80, title: '头像'},
+                {field: 'profile', width: 80, title: '头像',
+                    templet:function (res) {
+                        return '<img width="30px" height="30px" src="/user/'+ res.profile +'">'
+                    }},
                 {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [10, 15, 20, 25, 50, 100],
@@ -117,9 +122,9 @@
             layer.alert(result, {
                 title: '最终的搜索信息'
             });
-
             //执行搜索重载
             table.reload('currentTableId', {
+                url:"/user/findByRealname.do",
                 page: {
                     curr: 1
                 }
@@ -143,7 +148,7 @@
                     maxmin:true,
                     shadeClose: true,
                     area: ['100%', '100%'],
-                    content: '../page/table/add.html',
+                    content: '../page/table/addUser.html'
                 });
                 $(window).on("resize", function () {
                     layer.full(index);
@@ -151,7 +156,12 @@
             } else if (obj.event === 'delete') {  // 监听删除操作
                 var checkStatus = table.checkStatus('currentTableId')
                     , data = checkStatus.data;
-                layer.alert(JSON.stringify(data));
+                data = JSON.stringify(data);
+                // layer.alert(data);
+                console.log(data);
+                // var formData = data.slice(1, data.length - 1);
+                // alert(formData);
+
             }
         });
 
@@ -163,7 +173,6 @@
         table.on('tool(currentTableFilter)', function (obj) {
             var data = obj.data;
             if (obj.event === 'edit') {
-
                 var index = layer.open({
                     title: '编辑用户',
                     type: 2,
@@ -171,20 +180,40 @@
                     maxmin:true,
                     shadeClose: true,
                     area: ['100%', '100%'],
-                    content: '../page/table/edit.html',
+                    content: '../page/table/editUser.html',
+                    success:function (index, layero) {
+                        var body = layer.getChildFrame('body', index);
+                        // alert($("#username").val());
+                        body.find("#username").val(data.username);
+                    }
                 });
                 $(window).on("resize", function () {
                     layer.full(index);
                 });
                 return false;
             } else if (obj.event === 'delete') {
-                layer.confirm('真的删除行么', function (index) {
+                layer.confirm('真的删除行么', {btn:['是的,我确定','我再想想']}, function (index) {
                     obj.del();
                     layer.close(index);
+
+                    // alert(obj.data);
+                    // console.log(obj.data);
+                    $.post({
+                        url:"/user/delete.do",
+                        dataType:'json',
+                        data:obj.data,
+                        success:function (res) {
+                            if (res.success){
+                                layer.alert("删除成功", {title:"提示"});
+                                // location.reload();
+                            } else {
+                                layer.alert("删除失败", {title:"提示"});
+                            }
+                        }
+                    })
                 });
             }
         });
-
     });
 </script>
 

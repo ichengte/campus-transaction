@@ -18,6 +18,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="lib/layui-v2.5.5/css/layui.css" media="all">
+
     <!--[if lt IE 9]>
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
     <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
@@ -45,7 +46,7 @@
         <div class="layui-form login-form">
             <form class="layui-form" action="">
                 <div class="layui-form-item logo-title">
-                    <h1>LayuiMini后台登录</h1>
+                    <h1>南大校园二手街后台登录</h1>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-icon layui-icon-username" for="username"></label>
@@ -53,7 +54,7 @@
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-icon layui-icon-password" for="password"></label>
-                    <input type="password" name="password" lay-verify="required|password" placeholder="密码" autocomplete="off" class="layui-input" value="123456">
+                    <input type="password" name="userpwd" lay-verify="required|password" placeholder="密码" autocomplete="off" class="layui-input" value="admin">
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-icon layui-icon-vercode" for="captcha"></label>
@@ -94,11 +95,12 @@
         // 进行登录操作
         form.on('submit(login)', function (data) {
             data = data.field;
+            console.log(data)
             if (data.username == '') {
                 layer.msg('用户名不能为空');
                 return false;
             }
-            if (data.password == '') {
+            if (data.userpwd == '') {
                 layer.msg('密码不能为空');
                 return false;
             }
@@ -106,10 +108,23 @@
                 layer.msg('验证码不能为空');
                 return false;
             }
-            layer.msg('登录成功', function () {
-                window.location = 'admin-index.jsp';
+            $.post({
+                url:"/user/login.do",
+                dataType:'json',
+                data:data,
+                success:function (res) {
+                    if (res.success){
+                        layer.msg('登录成功', function () {});
+                        window.location.href = '/admin-index.jsp';
+                    } else {
+                        layer.msg('用户名或密码错误', function () {
+                        });
+                        window.location.reload();
+                    }
+                }
             });
-            return false;
+
+            return true;
         });
     });
 </script>

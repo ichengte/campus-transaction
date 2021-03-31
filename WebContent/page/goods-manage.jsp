@@ -84,7 +84,7 @@
 
         table.render({
             elem: '#currentTableId',
-            url: '../api/goods.json',
+            url: '/goods/findAll.do',
             toolbar: '#toolbarDemo',
             defaultToolbar: ['filter', 'exports', 'print', {
                 title: '提示',
@@ -93,16 +93,25 @@
             }],
             cols: [[
                 {type: "checkbox", width: 50},
-                {field: 'id', width: 80, title: 'ID', sort: true},
+                {field: 'gid', width: 80, title: 'ID', sort: true},
                 {field: 'title', width: 80, title: '标题'},
                 {field: 'publish_time', width: 80, title: '发布时间'},
-                {field: 'content', width: 80, title: '内容'},
-                {field: 'buy_price', width: 80, title: '购入价格'},
-                {field: 'sell_price', width: 80, title: '二手价格'},
-                {field: 'picture', width: 80, title: '图片'},
+                {field: 'content', width: 80, title: '描述'},
+                {field: 'buy_price', width: 80, title: '原价'},
+                {field: 'sell_price', width: 80, title: '卖出价'},
+                {field: 'picture', width: 80, title: '图片',
+                    templet:function (res) {
+                        return '<img width="30px" height="30px"  src="/goods/'+ res.picture +'">'
+                    }},
                 {field: 'views', width: 80, title: '浏览量'},
-                {field: 'category_id', width: 80, title: '商品分类'},
-                {field: 'owner_id', width: 80, title: '所有者'},
+                {field: 'category', width: 80, title: '商品分类',
+                    templet:function (res) {
+                        return '<span>'+ res.category.name +'</span>'
+                    }},
+                {field: 'user', width: 80, title: '所有者',
+                templet:function (res) {
+                    return '<span>'+ res.user.realname +'</span>'
+                }},
                 {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [10, 15, 20, 25, 50, 100],
@@ -145,6 +154,8 @@
                     area: ['100%', '100%'],
                     content: '../page/table/add.html',
                 });
+                // console.log(obj.field);
+
                 $(window).on("resize", function () {
                     layer.full(index);
                 });

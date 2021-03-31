@@ -64,4 +64,21 @@
     <update id="changeProfile">
         update tony_user set profile=#{profile} where uuid=#{uuid}
     </update>
+
+    <select id="findAll" resultType="com.user.entity.User">
+        select * from tony_user where uuid!=0
+    </select>
+
+    <select id="findByRealname" resultType="com.user.entity.User">
+        select * from tony_user where realname like '%'||#{0}||'%'
+    </select>
+
+    <insert id="add" parameterType="com.user.entity.User">
+        insert into tony_user(username, userpwd, realname, sex, academy, grade, qq, phone)
+        values(#{username},#{userpwd},#{realname},#{sex},#{academy},#{grade},#{qq},#{phone})
+    </insert>
+
+    <delete id="delete">
+        delete from tony_user where uuid=#{uuid}
+    </delete>
 </mapper>

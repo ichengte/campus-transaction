@@ -58,20 +58,20 @@
     <div class="layui-form-item">
         <label class="layui-form-label required">学院</label>
         <div class="layui-input-block">
-            <input type="text" name="academy" lay-verify="required" lay-reqtext="手机不能为空" placeholder="请输入手机" value="" class="layui-input">
+            <input type="text" name="academy" lay-verify="required" lay-reqtext="学院不能为空" placeholder="请输入学院" value="" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label required">年级</label>
         <div class="layui-input-block">
-            <input type="text" name="grade" lay-verify="required" lay-reqtext="手机不能为空" placeholder="请输入手机" value=""
+            <input type="text" name="grade" lay-verify="required" lay-reqtext="年级不能为空" placeholder="请输入年级" value=""
                    class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label required">QQ</label>
         <div class="layui-input-block">
-            <input type="text" name="qq" lay-verify="required" lay-reqtext="手机不能为空" placeholder="请输入手机" value=""
+            <input type="text" name="qq" lay-verify="required" lay-reqtext="QQ不能为空" placeholder="请输入QQ" value=""
                    class="layui-input">
         </div>
     </div>
@@ -92,17 +92,17 @@
 
         //监听提交
         form.on('submit(saveBtn)', function (data) {
-            var index = layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            }, function () {
-
-                // 关闭弹出层
-                layer.close(index);
-
-                var iframeIndex = parent.layer.getFrameIndex(window.name);
-                parent.layer.close(iframeIndex);
-
-            });
+            // var index = layer.alert(JSON.stringify(data.field), {
+            //     title: '最终的提交信息'
+            // }, function () {
+            //
+            //     // 关闭弹出层
+            //     layer.close(index);
+            //
+            //     var iframeIndex = parent.layer.getFrameIndex(window.name);
+            //     parent.layer.close(iframeIndex);
+            //
+            // });
             data = data.field;
             $.post({
                 url:"/user/add.do",
@@ -110,13 +110,26 @@
                 data:data,
                 success:function (res) {
                     if(res.success){
-                        alert("添加成功");
+                        var index = layer.alert("添加成功", {
+                            title: '提示'
+                        }, function () {
+                            layer.close(index);
+                            var iframeIndex = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(iframeIndex);
+                        });
                     } else {
-                        alert("添加失败");
+                            var index = layer.alert("添加失败", {
+                                title: '提示'
+                            }, function () {
+                                layer.close(index);
+                                var iframeIndex = parent.layer.getFrameIndex(window.name);
+                                parent.layer.close(iframeIndex);
+                            });
+
                     }
                 }
             });
-            return true;
+            return false;
         });
 
     });

@@ -29,9 +29,10 @@ public class GoodsController {
 
     @RequestMapping(value = "/findAll.do")
     @ResponseBody
-    public Object findAll(HttpSession session, String rank){
-        List<Goods> goodsList;
-        Integer rank_idx = 3;
+    public Object findAll(HttpSession session, String rank, Integer limit){
+//        System.out.println(limit + ":code");
+        List<Goods> goodsList = new ArrayList<>();
+        int rank_idx = 3;
         if (rank == null) rank = "publish_time";
         switch (rank) {
             case "credit":
@@ -46,6 +47,18 @@ public class GoodsController {
         }
 //        System.out.println(rank_idx);
         goodsList = goodsService.findAll(rank_idx);
+        HashMap<String, Object> map = new HashMap<>();
+        if (limit == 15){
+            if (goodsList.isEmpty()){
+                map.put("code", 1);
+            } else {
+                map.put("code", 0);
+                map.put("msg", "");
+                map.put("count", goodsList.size());
+                map.put("data", goodsList);
+            }
+            return map;
+        }
 //        System.out.println(goodsList);
 //        for (Goods g : goodsList) {
 //            System.out.println(g.getPublish_time());

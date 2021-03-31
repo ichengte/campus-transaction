@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% if (session.getAttribute("user")==null){%>
+<script type="text/javascript">
+    alert("请您先登录");
+    location.href="/admin-login.jsp";
+</script>
+<%
+}%>
 <%--
   ~ Project: campus-transaction
   ~ File: admin-index.jsp
@@ -163,9 +170,13 @@
         });*/
 
         $('.login-out').on("click", function () {
-            layer.msg('退出登录成功', function () {
-                window.location = 'page/login-3.html';
+            $.post({
+                url:"/user/loginOut.do",
+                data:{"aid":1},
+                dataType:'json'
             });
+            layer.msg("退出成功", function () {});
+            window.location = '/admin-login.jsp';
         });
     });
 </script>

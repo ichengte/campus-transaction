@@ -14,6 +14,8 @@ import com.user.entity.User;
 import com.user.mapper.UserMapper;
 import com.user.service.UserService;
 
+import java.util.List;
+
 @Service("userService")
 public class UserServiceImpl implements UserService {
 	
@@ -49,5 +51,26 @@ public class UserServiceImpl implements UserService {
 	public Boolean changeProfile(User user) {
 		return userMapper.changeProfile(user);
 	}
+
+	@Override
+	public List<User> findAll() {
+		return userMapper.findAll();
+	}
+
+	@Override
+	public List<User> findByRealname(String realname) {
+		return userMapper.findByRealname(realname);
+	}
+
+	@Override
+	public Boolean add(User user) {
+		return userMapper.add(user);
+	}
+
+	@Override
+	public Boolean delete(User user) {
+		return userMapper.delete(user);
+	}
+
 
 }
