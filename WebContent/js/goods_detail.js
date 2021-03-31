@@ -7,6 +7,30 @@ function getUrlParam(name) {
 var gid = getUrlParam('gid');
 // alert(gid);
 
+function initComment(gid){
+	$.post({
+		url:"/comment/findAll.do",
+		dataType:'json',
+		data:{"gid":gid},
+		success:function (res) {
+			if (res.success){
+				console.log(res);
+				// alert(res[i].commentcontent)
+				res = res.commentList;
+				for (var i = 0; i < res.length; i++){
+					var str = '<div class="comment" style="margin-top:25px;">'+
+							'<img class="avatar" src="/user/'+ res[i].user.profile +'" alt="头像">'+
+							'<div class="commentator" style="padding-left:55px;padding-bottom:5px;color:rgb(75, 192, 165);border-bottom: 1px dashed rgb(75, 192, 165);">'+
+							'<b>'+ res[i].user.realname +'</b> </div>'+
+							'<p class="comment" style="padding-left:55px;padding-bottom:5px;padding-top:5px;">' + res[i].commentcontent +'</p>'+
+							'<div class="man" style="padding-left:55px;padding-bottom:5px;"> </div> </div>';
+						$("#comment-list").append(str)
+				}
+			}
+		}
+	})
+}
+
 function initProductWithUserInfo() {
 	$.ajax({
 		type: "POST",
@@ -24,7 +48,7 @@ function initProductWithUserInfo() {
 			$("p[class='ershou-title']").html(res.title).after('<div class=" discount"> ' +
 				' <span class="buy-price">原价：' + res.buy_price + '<br/></span><span class="ershou-price">卖出价：￥' + res.sell_price + '</span> ' +
 				' </div>').after('<p class="bro-counts"><span>' + res.views + '</span>人看了</p>');
-			$("#pid").append('<div class="name"><span>商品编号</span></div><div class="value"><span id="pid">' + res.gid + '</span></div>'
+			$("#pid").append('<div class="name"><span>商品编号</span></div><div class="value"><span id="gid">' + res.gid + '</span></div>'
 			).after(
 				'<li class="ershou-time"><div class="name"><span>发布时间</span></div>' +
 				'<div class="value"><span class="real-time" id="creat_time">' + res.publish_time + '</span></div></li>'
@@ -47,16 +71,16 @@ function initProductWithUserInfo() {
 
 			$("div[class='ershou-desc']").append(
 				'<div class="desc clearfix"><a href="#" target="_top"> ' +
-				'<img id="user_ph"src="/user/' + res.user.profile + '"></a><p id="user_cmt">' + res.content + '</p></div>'
+				'<img id="user_ph"src="/user/' + res.user.profile + '"></a><p id="user_cmt">' + res.content + '</p></div>'+
+				'<input hidden id="uuuuid" name="uuuuid" value="'+ res.user.uuid +'" /><span onclick="addComment('+ res.gid +')" class="comment-btn">评论</span>'+
+				'<textarea class="comment-text"></textarea>'
 			)
-
-
 		}
 	});
 }
 
 $(document).ready(function () {
-
+	initComment(gid);
 	initProductWithUserInfo();
 	$("#buy-button").click(function () {
 		var str = "${sessionScope.user.username}";
@@ -70,7 +94,7 @@ $(document).ready(function () {
                     ' <div class="value">手机：<span class="user-num"id="user_tel" ">'+resp.tel+'</span>'+
                     ' &nbsp;&nbsp;QQ:&nbsp;<span class="user-num"id="user_qq">'+resp.qq+'</span></div>') */
 		}
-	})
+	});
 
 });
 

@@ -31,10 +31,17 @@ public class UserController {
 	
 	@RequestMapping(value="/login.do")
 	@ResponseBody
-	public User login(String username, String userpwd, HttpSession session) {
+	public Object login(String username, String userpwd, HttpSession session) {
 		User user = userService.login(username, userpwd);
-		session.setAttribute("user", user);
-		return user;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		if (user != null){
+			map.put("user", user);
+			session.setAttribute("user", user);
+			map.put("success", 1);
+		} else {
+			map.put("success", 0);
+		}
+		return map;
 	}
 
 	@RequestMapping(value="/register.do")

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Project: campus-transaction
+  ~ File: CategoryMapper.xml
+  ~ Date: 2021/3/24 下午5:23
+  ~ Author: TonyJam
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.comment.mapper.CommentMapper">
+    <resultMap  type="com.comment.entity.Comment" id="commentResult">
+        <id column="coid" property="coid"/>
+        <result column="commentcontent" property="commentcontent"/>
+        <result column="commenttime" property="commenttime"/>
+        <association property="goods" javaType="com.goods.entity.Goods">
+            <id column="gid" property="gid"/>
+        </association>
+        <association property="user" javaType="com.user.entity.User">
+            <id column="uuid" property="uuid"/>
+            <result column="realname" property="realname"/>
+            <result column="credit" property="credit"/>
+            <result column="phone" property="phone"/>
+            <result column="qq" property="qq"/>
+            <result column="academy" property="academy"/>
+            <result column="grade" property="grade"/>
+            <result column="credit" property="credit"/>
+            <result column="profile" property="profile"/>
+        </association>
+    </resultMap>
+
+    <select id="findAll" resultMap="commentResult">
+        select g.*,u.*,co.* from tony_goods g,tony_user u,tony_comment co
+        where co.gid=g.gid and co.uuid=u.uuid and g.gid=#{0}
+    </select>
+
+    <insert id="add">
+        insert into tony_comment(commentcontent, commenttime, gid, uuid) values(#{commentcontent},#{commenttime},#{goods.gid},#{user.uuid})
+    </insert>
+
+</mapper>

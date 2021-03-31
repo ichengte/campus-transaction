@@ -50,11 +50,63 @@
         </div>
         <div class="ershou-desc">
         </div>
+        <div class="comments want-comments" style="width:98.5%">
+            <div class="comments-wr" style="border-left:0px;">
+                <div class="comment-wr">
+                    <div class="post-comment clearfix">
+                        <div class="comments want-comments" style="width:98.5%;margin-top:0px;padding-top:0px;">
+                            <div class="comments-wr" style="border:0px;">
+                                <div class="comment-wr" id="comment-list">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 <%@ include file="../common/shop_right.jsp" %>
 <%@ include file="../common/shop_footer.jsp" %>
+
+<script type="text/javascript">
+    <%--alert(${sessionScope.user.uuid});--%>
+    function addComment(gid) {
+        // alert(gid);
+        $(".comment-text").css("display", "block");
+        $(".comment-btn").text("提交评论");
+        $(".comment-btn").removeAttr("onclick");
+        $(".comment-btn").click(function () {
+            $.post({
+                url:"/comment/add.do",
+                data: {
+                    "commentcontent":$(".comment-text").val(),
+                    "user.uuid":${sessionScope.user.uuid},
+                    "goods.gid":gid
+                },
+                dataType: 'json',
+                success:function (res) {
+                    if (res.success){
+                        // alert();
+                        res = res.comment;
+
+                        var str = '<div class="comment" style="margin-top:25px;">'+
+                            '<img class="avatar" src="'+ $("#myavatar").attr("src") + '" alt="头像">'+
+                            '<div class="commentator" style="padding-left:55px;padding-bottom:5px;color:rgb(75, 192, 165);border-bottom: 1px dashed rgb(75, 192, 165);">'+
+                            '<b>'+ $("#myrealname").text() +'</b> </div>'+
+                            '<p class="comment" style="padding-left:55px;padding-bottom:5px;padding-top:5px;">' + $(".comment-text").val() +'</p>'+
+                            '<div class="man" style="padding-left:55px;padding-bottom:5px;"> </div> </div>';
+                        $("#comment-list").append(str);
+                        $(".comment-text").val("");
+                        alert("发布成功！");
+                    }
+                }
+            })
+        });
+    }
+</script>
 
 </body>
 </html>

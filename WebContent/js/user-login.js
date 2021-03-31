@@ -80,7 +80,7 @@ $(document).ready(function () {
                 border: "1px solid red",
                 boxShadow: "0 0 2px red"
             });
-            $('#loginCue').html("<font color='red'><b>用户名不能为空</b></font>");
+            $('#loginCue').html("<span style='color: red; '><b>用户名不能为空</b></span>");
             return false;
         } else {
             $('#username').css({
@@ -105,12 +105,17 @@ $(document).ready(function () {
         // 登录
         // $("#login_button").submit();
         $.ajax({
-            type: "GET",
-            url: "user/login.do",
+            type: "POST",
+            url: "/user/login.do",
             dataType: 'json',
             data: {"username": $('#username').val(), "userpwd": $('#userpwd').val()},
             success: function (res) {
-                location.href = "user-index.jsp"
+                if (res.success){
+                    location.href = "user-index.jsp"
+                } else {
+                    alert("用户名或密码错误，请重新输入");
+                }
+
             }
         });
 

@@ -12,7 +12,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Insert title here</title>
+    <title>南大校园二手街</title>
     <link media="all" href="${pageContext.request.contextPath}/css/index.css" type="text/css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/common.js" type="text/javascript"></script>
@@ -84,8 +84,8 @@
         if (id !== "" && id != null) {
             $("#have-not-login").html("");
             var str = $('<div id="have_login" class="clearfix"><div id="person_info" class="clearfix">' +
-                '<a href="/common/user_center.jsp?username=' + username + '"><img  class="avatar"  style="height:48px;width:48px; border-radius: 50%;" src="/user/' + profile + '" alt="profile"></a>' +
-                '<div  style="display:inline;"  class="person_name"><a style="font-size: 20px" href="${pageContext.request.contextPath}/common/user_center.jsp?username=' + username + '" id="id-btn">Hi,' + realname + '</a></div>' +
+                '<a href="/common/user_center.jsp?username=' + username + '"><img id="myavatar" class="avatar"  style="height:48px;width:48px; border-radius: 50%;" src="/user/' + profile + '" alt="profile"></a>' +
+                '<div  style="display:inline;"  class="person_name"><a style="font-size: 20px" href="${pageContext.request.contextPath}/common/user_center.jsp?username=' + username + '" id="id-btn" id="myrealname">Hi,' + realname + '</a></div>' +
                 '<div class="btn-primary btn" style="display:inline;" id="login-out-btn"><a href="/user/loginOut.do">&nbsp;&nbsp;退出</a></div>' +
                 '</div> </div>')
             $("#have-not-login").append(str)

@@ -135,8 +135,7 @@ public class GoodsController {
         return goodsList;
     }
 
-    @RequestMapping(value = "/saveInfo.do")
-    @ResponseBody
+
     public Object saveInfo(GoodsDto goodsDto) throws IOException {
         Goods goods = goodsDto.getGoods();
         MultipartFile file = goodsDto.getPicture();
@@ -158,7 +157,8 @@ public class GoodsController {
         return map;
     }
 
-
+    @RequestMapping(value = "/goodsPublish.do")
+    @ResponseBody
     public Object goodsPublish(GoodsDto goodsDto) throws IOException {
         Goods goods = goodsDto.getGoods();
         MultipartFile file = goodsDto.getPicture();

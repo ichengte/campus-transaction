@@ -90,6 +90,12 @@ public class LoginInterceptor implements HandlerInterceptor {
         if (url.indexOf("changeProfile.do") > 0){
             return true;
         }
+        if (url.indexOf("comment.do") > 0){
+            return true;
+        }
+        if (url.indexOf("add.do") > 0){
+            return true;
+        }
         response.sendRedirect("/user-login.jsp");
         return false;
     }

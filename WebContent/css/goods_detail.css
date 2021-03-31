@@ -144,12 +144,35 @@ a.bigger-photo { display: block; width: 100%; height: 100%; overflow: hidden; li
 .complain { width: 100%; position: absolute; left: -30px; bottom: 15px; text-align: center; }
 .complain a { color: rgb(153, 153, 153); font-size: 1em; text-decoration: none; }
 .complain a:hover { color: rgb(100, 203, 179); }
-.ershou-desc { margin-top: 20px; padding: 30px 90px; background-color: rgb(255, 255, 255); background-image: url('../images/info.png'); background-position: 12px 12px; background-repeat: no-repeat; text-align: left; }
+.ershou-desc { margin-top: 20px; padding: 30px 90px; background-color: rgb(255, 255, 255); background-image: url('../images/info.png'); background-position: 12px 12px; background-repeat: no-repeat; text-align: left; position: relative;}
 .avatar { width: 40px; height: 40px; border-radius: 100%; float: left; overflow: hidden; }
 .desc { min-height: 50px; color: rgb(102, 102, 102); font-size: 1.17em; line-height: 23px; }
 .comments { position: relative; width: 525px; float: left; padding: 54px 0px 25px 15px; margin-top: 20px; background-color: rgb(255, 255, 255); }
 .comments-title { position: absolute; left: -5px; top: 5px; width: 88px; height: 34px; background: transparent url('../images/comment.png') no-repeat scroll 0% 0%; color: rgb(255, 255, 255); font-size: 1.5em; text-indent: -9999em; }
 .comments-wr { width: 100%; margin-top: 5px; }
+.comment-btn {
+	font: 12px "Microsoft YaHei";
+	position: absolute;
+	right: 110px;
+	bottom: 15px;
+	/*display: block;*/
+	color: rgb(75, 192, 165);
+	border: 1px solid rgb(75, 192, 165);
+	padding: 3px 16px;
+	border-radius: 13px;
+	cursor: pointer;
+}
+.comment-text{
+	background-color: #fbf9f9;
+	width:640px;
+	height:100px;
+	font-size: 20px;
+	border:solid 1px #fff;
+	border-radius:7px;
+	resize:none;
+	display: none;
+	margin-bottom: 20px;
+}
 div.comment::after { content: ""; width: 0px; height: 0px; display: block; visibility: hidden; clear: both; }
 div.comment .avatar, .post-comment .avatar { position: relative; width: 40px; height: 40px; border: 1px solid rgb(75, 192, 165); background-color: rgb(255, 255, 255); }
 .post-comment { position: relative; }
@@ -167,8 +190,8 @@ div.comment .avatar::before, .post-comment .avatar::before { content: ""; displa
 .comment-input-wr { width: 100%; height: 60px; float: left; }
 .sub-comment, .comment-login { width: 56px; height: 60px; background: transparent url('../images/comment-button.png') no-repeat scroll 0% 0%; color: rgb(255, 255, 255); font-size: 1.33em; text-indent: -9999em; float: right; cursor: pointer; }
 .comment-login { background: transparent url('../images/comment-login.png') no-repeat scroll 0% 0%; }
-.comments-wr { position: relative; top: -20px; margin-left: 21px; border-left: 1px solid rgb(75, 192, 165); }
-.comment-wr { position: relative; left: -26px; top: 20px; }
+.comments-wr { position: relative; top: 0px; margin-left: 21px; border-left: 1px solid rgb(75, 192, 165); }
+.comment-wr { position: relative; left: -26px;}
 div.comment .avatar, .post-comment .avatar { padding: 3px; }
 #user_ph { float: left; margin-right: 20px; width: 52px; height: 52px; vertical-align: middle; border-radius: 100%; }
 #user_cmt { float: right; width: 667px; }
