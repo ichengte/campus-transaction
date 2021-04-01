@@ -10,6 +10,7 @@ package com.user.controller;
 import com.user.entity.UserDto;
 import org.apache.ibatis.annotations.Param;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -177,7 +178,7 @@ public class UserController {
 		if (userService.add(user)){
 			map.put("success", 1);
 		} else {
-			map.put("succcess", 0);
+			map.put("success", 0);
 		}
 		return map;
 	}
@@ -193,5 +194,20 @@ public class UserController {
 		}
 		return map;
 	}
+
+//	@RequestMapping(value = "/deleteMany.do")
+//	@ResponseBody
+//	public Object deleteMany(String data) throws IOException {
+//		data = data.substring(1, data.length() - 1);
+//		System.out.println(data.split(","));
+//		User user = new User();
+//		HashMap<String, Object> map = new HashMap<>();
+//		if (userService.delete(user)){
+//			map.put("success", 1);
+//		} else {
+//			map.put("success", 0);
+//		}
+//		return map;
+//	}
 
 }

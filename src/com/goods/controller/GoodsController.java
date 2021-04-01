@@ -3,6 +3,7 @@ package com.goods.controller;
 import com.goods.entity.Goods;
 import com.goods.entity.GoodsDto;
 import com.goods.service.GoodsService;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,7 +49,7 @@ public class GoodsController {
 //        System.out.println(rank_idx);
         goodsList = goodsService.findAll(rank_idx);
         HashMap<String, Object> map = new HashMap<>();
-        if (limit == 15){
+        if (limit != null){
             if (goodsList.isEmpty()){
                 map.put("code", 1);
             } else {
@@ -209,5 +210,6 @@ public class GoodsController {
         }
         return map;
     }
+
 
 }

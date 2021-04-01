@@ -157,11 +157,26 @@
                 var checkStatus = table.checkStatus('currentTableId')
                     , data = checkStatus.data;
                 data = JSON.stringify(data);
-                // layer.alert(data);
                 console.log(data);
-                // var formData = data.slice(1, data.length - 1);
-                // alert(formData);
+                layer.confirm('真的删除行么', {btn:['是的,我确定','我再想想']}, function (index) {
 
+                    // alert(obj.data);
+                    // console.log(obj.data);
+                    $.post({
+                        url:"/user/delete.do",
+                        dataType:'json',
+                        data:{"list": data},
+                        success:function (res) {
+                            if (res.success){
+                                layer.alert("删除成功", {title:"提示"});
+                                // location.reload();
+                            } else {
+                                layer.alert("删除失败", {title:"提示"});
+                            }
+                        }
+                    })
+                    layer.close(index);
+                });
             }
         });
 
@@ -185,6 +200,7 @@
                         var body = layer.getChildFrame('body', index);
                         // alert($("#username").val());
                         body.find("#username").val(data.username);
+                        form.render();
                     }
                 });
                 $(window).on("resize", function () {
